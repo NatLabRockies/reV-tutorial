@@ -229,19 +229,19 @@ sudo apt install python3.12-venv
 ```
 
 Then, create and activate this environment using a set of commands like this:
-    ```bash
-    mkdir ~/envs
-    cd ~/envs
-    python3 -m venv rev
-    source rev/bin/activate
-    ```
+```bash
+mkdir ~/envs
+cd ~/envs
+python3 -m venv rev
+source rev/bin/activate
+```
 
 Then you could assign the activation command to an alias if you don't want to type it out each time with a command like this:
-    ```bash
-    echo -e "\nalias arev='source ~/envs/rev/bin/activate'" >> ~/.bashrc
-    source ~/.bashrc
-    arev
-    ```
+```bash
+echo -e "\nalias arev='source ~/envs/rev/bin/activate'" >> ~/.bashrc
+source ~/.bashrc
+arev
+```
 
 ### 5b) Configure Data Access
 1. Create an HSDS Configuration file in your home directory called `~/.hscfg` with just the following content:
