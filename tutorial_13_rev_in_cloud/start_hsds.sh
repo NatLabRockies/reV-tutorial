@@ -7,8 +7,21 @@
 #     https://data.openei.org/s3_viewer?bucket=nrel-pds-hsds&prefix=nrel
 
 
+# Log to file
+if [ "$1" == "--log" ]; then
+    logfpath="./logs/stdout/start_hsds_$HOSTNAME-$$.logs"
+    if [ -f $logfpath ]; then
+        rm $logfpath
+    fi
+    if [ ! -d ./logs/stdout ]; then
+        mkdir -p ./logs/stdout
+    fi
+    exec 3>&1 1>$logfpath 2>&1
+fi
+
 # Set the location of the HSDS code directory
 export HSDS_DIR=$HOME
+LOCAL_IMAGE=/scratch/hsds_docker_image.tar
 
 # Get this instance's ID and type (with Instance Meta Data Service (IMDS) V2 below, comment out and use V1 below if needed)
 export TOKEN=$(curl --silent -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
@@ -33,15 +46,21 @@ check_hsds () {
 }
 
 install_docker () {
-    # Update repositories
-    sudo apt update
-
     # Run this convenient docker installation script
     curl https://get.docker.com | sudo sh
+
+    # Set the socket file permissions
+    sudo chmod 666 /var/run/docker.sock
 
     # Update groups
     sudo groupadd docker
     sudo usermod -aG docker "$USER"
+
+    # See if we've saved an image so we avoid pulling it each time
+    if [[ -f  $LOCAL_IMAGE ]]; then
+        echo "Local Docker image found, loading $LOCAL_IMAGE"
+        sudo docker load < $LOCAL_IMAGE
+    fi
 }
 
 # Stop server if requested
@@ -88,25 +107,45 @@ else
         # Start HSDS
         echo "Starting local HSDS server..."
         cd $HSDS_DIR/hsds  || exit 1
-        ./runall.sh "$(nproc --all)"
+        ./runall.sh 24
+        # ./runall.sh "$(nproc --all)"
+
+        # Save image to a local file if it hasn't been already
+        if [[ ! -f $LOCAL_IMAGE ]]; then
+            echo "No local Docker image found, saving HSDS image to $LOCAL_IMAGE"
+            sudo docker save hdfgroup/hsds:latest -o $LOCAL_IMAGE
+            sudo chown ubuntu $LOCAL_IMAGE
+        fi
+
     else
         echo HSDS service running: $hsds_running
     fi
 
     # Give HSDS a chance to warm up (not sure why but this helps a ton!)
-    sleep 5s
+    sleep 10s
 
 fi
 
-# One more test to make sure it's actually working
+# Test with rex Resource to make sure it's actually working
+test=$(python /scratch/reV-tutorial/tutorial_13_rev_in_cloud/test_hsds.py)
+echo "Running HSDS Python access test..."
+if [[ $test == *"rex data access test passed."* ]]; then
+    echo "Python data access test PASSED"
+else
+    echo "Python data access test FAILED"
+fi
+
+# Now test with hsls to see if one method works while the other doesn't
 test_fpath="/nrel/wtk/conus/wtk_conus_2010.h5"
 test=$(hsls /nrel/wtk/conus/wtk_conus_2010.h5 | grep windspeed_10m)
 echo "Running HSDS access test on $test_fpath..."
 if [[ $test == "windspeed_10m Dataset {8760, 2488136}" ]]; then
-    echo "Windspeed data access test PASSED"
+    echo "HSLS data access test PASSED"
 else
-    echo "Windspeed data access test FAILED"
+    echo "HSLS data access test FAILED"
 fi
+
+# Print out some server information
 state=$(hsinfo | grep "server state")
 uptime=$(hsinfo | grep "up:" | cut -d":" -f2)
 echo "HSDS $state, uptime: $uptime"

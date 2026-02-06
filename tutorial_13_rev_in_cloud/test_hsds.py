@@ -19,11 +19,10 @@ def test_h5pyd():
         print(f"h5pyd data access test failed '{e}'")
 
 
-
 def test_rex():
     """Test resource data access with rex."""
     try:
-        hsds_kwargs = {"retries": 0, "timeout": 5}
+        hsds_kwargs = {"retries": 0, "timeout": 15}
         with Resource(SAMPLE_FPATH, hsds_kwargs=hsds_kwargs) as file:
             _ = file["ghi", 0, 0]
             print("rex data access test passed.")
