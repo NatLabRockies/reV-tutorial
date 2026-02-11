@@ -6,6 +6,8 @@
 # Online Data Browser:
 #     https://data.openei.org/s3_viewer?bucket=nrel-pds-hsds&prefix=nrel
 
+thisfile=$(realpath $0)
+echo "Running $thisfile..."
 
 # Log to file
 if [ "$1" == "--log" ]; then
@@ -21,6 +23,8 @@ fi
 
 # Set the location of the HSDS code directory
 export HSDS_DIR="$HOME/hsds"
+
+# Set a location for the HSDS image
 LOCAL_IMAGE=/scratch/hsds_docker_image.tar
 
 # Get this instance's ID and type (with Instance Meta Data Service (IMDS) V2 below, comment out and use V1 below if needed)
@@ -32,6 +36,13 @@ export EC2_TYPE=$(curl --silent -H "X-aws-ec2-metadata-token: $TOKEN" http://169
 # export EC2_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 # export EC2_TYPE=$(curl -s http://169.254.169.254/latest/meta-data/instance-type)
 
+# Stop server if requested
+if [[ $1 == "--stop" ]]; then
+    echo "Stopping HSDS server."
+    cd $HSDS_DIR
+    ./runall.sh --stop
+    exit 0
+fi
 
 # Define Docker checking and installation functions
 check_hsds () {
@@ -62,19 +73,6 @@ install_docker () {
         sudo docker load < $LOCAL_IMAGE
     fi
 }
-
-
-# Stop server if requested
-if [[ $1 == "--stop" ]]; then
-    echo "Stopping HSDS server."
-    cd $HSDS_DIR
-    ./runall.sh --stop
-    exit 0
-fi
-
-# Start script with first message to user
-thisfile=$(realpath $0)
-echo "Running $thisfile on $EC2_ID ($EC2_TYPE) from $PWD..."
 
 # First check to see if HSDS is running
 check_hsds

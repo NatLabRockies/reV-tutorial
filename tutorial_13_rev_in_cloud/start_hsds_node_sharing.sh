@@ -6,17 +6,26 @@
 # Online Data Browser:
 #     https://data.openei.org/s3_viewer?bucket=nrel-pds-hsds&prefix=nrel
 
+thisfile=$(realpath $0)
+echo "Running $thisfile..."
+
+# Log to file
+if [ "$1" == "--log" ]; then
+    logfpath="./logs/stdout/start_hsds_$HOSTNAME-$$.logs"
+    if [ -f $logfpath ]; then
+        rm $logfpath
+    fi
+    if [ ! -d ./logs/stdout ]; then
+        mkdir -p ./logs/stdout
+    fi
+    exec 3>&1 1>$logfpath 2>&1
+fi
 
 # Set the location of the HSDS code directory
-export HSDS_DIR=$HOME
+export HSDS_DIR="$HOME/hsds"
 
-# Stop server if requested
-if [[ $1 == "--stop" ]]; then
-    echo "Stopping HSDS server."
-    cd $HSDS_DIR/hsds
-    ./runall.sh --stop || exit 1
-    exit 0
-fi
+# Set a location for the HSDS image
+LOCAL_IMAGE=/scratch/hsds_docker_image.tar
 
 # Get this instance's ID and type (with Instance Meta Data Service (IMDS) V2 below, comment out and use V1 below if needed)
 export TOKEN=$(curl --silent -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
@@ -27,9 +36,15 @@ export EC2_TYPE=$(curl --silent -H "X-aws-ec2-metadata-token: $TOKEN" http://169
 # export EC2_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 # export EC2_TYPE=$(curl -s http://169.254.169.254/latest/meta-data/instance-type)
 
-thisfile=$(realpath $0)
-echo "Running $thisfile on $EC2_ID ($EC2_TYPE) from $HSDS_DIR..."
+# Stop server if requested
+if [[ $1 == "--stop" ]]; then
+    echo "Stopping HSDS server."
+    cd $HSDS_DIR
+    ./runall.sh --stop
+    exit 0
+fi
 
+# Define Docker checking and installation functions
 check_hsds () {
     hsds_running=false
     if command -v docker &>/dev/null; then
@@ -42,17 +57,22 @@ check_hsds () {
 }
 
 install_docker () {
-    # Update repositories
-    sudo apt update
-
-    # Run the convenient docker install script
+    # Run this convenient docker installation script
     curl https://get.docker.com | sudo sh
+
+    # Set the socket file permissions
+    sudo chmod 666 /var/run/docker.sock
 
     # Update groups
     sudo groupadd docker
     sudo usermod -aG docker "$USER"
-}
 
+    # See if we've saved an image so we avoid pulling it each time
+    if [[ -f  $LOCAL_IMAGE ]]; then
+        echo "Local Docker image found, loading $LOCAL_IMAGE"
+        sudo docker load < $LOCAL_IMAGE
+    fi
+}
 
 # First check to see if HSDS is running
 check_hsds
@@ -64,15 +84,15 @@ else
     # Lock this file so only one process on any EC2 hardware can run it
     lockfile=/var/lock/start_hsds_$EC2_ID.flock
     thisfile=$(realpath $0)
-    exec 9>$lockfile || exit 1  # Ubuntu doesn't allow double digit file descriptors by default, apparently, whereas other OSs do (someone email me and explain me this)
+    exec 9>$lockfile || exit 1
     flock -x -w 600 9 || { echo "ERROR: flock() failed." >&2; exit 1; }
     echo "Locking $thisfile with $lockfile..."
 
     # Clone HSDS repository if not found
-    if [ ! -d $HSDS_DIR/hsds ]; then
-        echo "$HSDS_DIR/hsds not found, cloning https://github.com/HDFGroup/hsds.git..."
+    if [ ! -d $HSDS_DIR ]; then
+        echo "$HSDS_DIR not found, cloning https://github.com/HDFGroup/hsds.git..."
+        git clone https://github.com/HDFGroup/hsds.git $HSDS_DIR
         cd $HSDS_DIR
-        git clone https://github.com/HDFGroup/hsds.git
     fi
 
     # Install Docker if not found
@@ -92,30 +112,49 @@ else
 
         # Start HSDS
         echo "Starting local HSDS server..."
-        cd $HSDS_DIR/hsds  || exit 1
+        cd $HSDS_DIR  || exit 1
+        echo $PWD
         ./runall.sh "$(nproc --all)"
+
+        # Save image to a local file if it hasn't been already
+        if [[ ! -f $LOCAL_IMAGE ]]; then
+            echo "No local Docker image found, saving HSDS image to $LOCAL_IMAGE"
+            sudo docker save hdfgroup/hsds:latest -o $LOCAL_IMAGE
+            sudo chown ubuntu $LOCAL_IMAGE
+        fi
     else
         echo HSDS service running: $hsds_running
     fi
 
     # Give HSDS a chance to warm up (not sure why but this helps a ton!)
-    sleep 5s
-
-    # Let's test here if it wasn't already running
-    test_fpath="/nrel/wtk/conus/wtk_conus_2010.h5"
-    test=$(hsls /nrel/wtk/conus/wtk_conus_2010.h5 | grep windspeed_10m)
-    echo "Running HSDS access test on $test_fpath..."
-    if [[ $test == "windspeed_10m Dataset {8760, 2488136}" ]]; then
-        echo "Windspeed data access test PASSED"
-    else
-        echo "Windspeed data access test FAILED"
-    fi
-    state=$(hsinfo | grep "server state")
-    uptime=$(hsinfo | grep "up:" | cut -d":" -f2)
-    echo "HSDS $state, uptime: $uptime"
+    sleep 15s
 
     # Release the lock on this file (Not necessary unless further steps are added)
     echo "Releasing lock on $thisfile"
     flock -u 9
 
 fi
+
+# Test with rex Resource to make sure it's actually working
+test=$(python /scratch/reV-tutorial/tutorial_13_rev_in_cloud/test_hsds.py)
+echo "Running HSDS Python access test..."
+if [[ $test == *"rex data access test passed."* ]]; then
+    echo "Python data access test PASSED"
+else
+    echo "Python data access test FAILED"
+fi
+
+# Now test with hsls to see if one method works while the other doesn't
+test_fpath="/nrel/wtk/conus/wtk_conus_2010.h5"
+test=$(hsls /nrel/wtk/conus/wtk_conus_2010.h5 | grep windspeed_10m)
+echo "Running HSDS access test on $test_fpath..."
+if [[ $test == "windspeed_10m Dataset {8760, 2488136}" ]]; then
+    echo "HSLS data access test PASSED"
+else
+    echo "HSLS data access test FAILED"
+fi
+
+# Print out some server information
+state=$(hsinfo | grep "server state")
+uptime=$(hsinfo | grep "up:" | cut -d":" -f2)
+echo "HSDS $state, uptime: $uptime"

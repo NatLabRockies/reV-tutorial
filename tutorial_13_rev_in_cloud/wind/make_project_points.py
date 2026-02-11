@@ -28,12 +28,17 @@ def main(src, state=None):
     print(f"Reading meta data for {src}")
     with Resource(src) as file:
         pp = file.meta
-        pp.loc[:, "gid"] = pp.index
-        pp.loc[:, "config"] = "default"
-        if state:
-            state = state.title()
-            print(f"Filtering for {state}")
-            pp = pp[pp["state"] == state]
+
+    # Add needed fields and filter
+    pp.loc[:, "gid"] = pp.index
+    pp.loc[:, "config"] = "default"
+    if state:
+        state = state.title()
+        print(f"Filtering for {state}")
+        pp = pp[pp["state"] == state]
+    else:
+        print(f"Filtering for the United States")
+        pp = pp[pp["country"] == "United States"]
 
     # Write to file
     if state:
@@ -46,4 +51,4 @@ def main(src, state=None):
 
 
 if __name__ == "__main__":
-    main(src=SAMPLE_FPATH, state="Rhode Island")
+    main(src=SAMPLE_FPATH)

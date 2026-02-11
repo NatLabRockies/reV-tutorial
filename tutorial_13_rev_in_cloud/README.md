@@ -359,17 +359,27 @@ So, estimating the cost of your reV run or runs will depend both on how long you
 ### Test Run Rate Assumptions:
 - **LustreFSx SSD (1.2GB):** $720.13 /month 
 - **Head node (t3.large):**  $60.74 /month
-- **Compute node (m6a.12xlarge):**  $2.07 /hour
+- **Compute node (m6a.12xlarge):**  $2.07 /hour *
 - **Compute node (c6a.12xlarge):** $1.84 /hour
 
-### National Scale reV Run Costs
-- **Wind:** 119.5 hours * $1.84/hour = $218.96
-- **Solar:** 14.3 hours * $1.84/hour = 26.12
+\* Not tested, but included for reference
+
+### National Scale reV Run Cost Calculations:
+- **Solar:** (14.3 hours * $1.84/hour) + ($720.13 / 30 days) + ($60.74 / 30) = $52.341
+- **Wind:** (119.5 hours * $1.84/hour) + ($720.13 / 30 days) + ($60.74 / 30) = $245.91
 
 ### Estimated Daily Costs
 - Day 1 - $128 in total costs
 - Day 2 - $202 in total costs
 - Day 3 - $51 in total costs
+
+
+|  Compute module  | Source Data         |  Timesteps (2 years) | Sites       | Total Datum  | Total Compute Time (hr) | Total EC2 Cost (daily) | Cost per datum |
+| ---------------- | ------------------- | -------------------- | ----------- | ------------ | ----------------------- | ---------------------- | -------------- |
+|   PVWattsV8      |  NSRDB (4km, 30min) |    35,040            |  546,939    |  1.92e+10    |  14.3                   |  $52.34                |  2.73e-09      |
+|   Windpower      |  WTK (2km, 1hr)     |    17,520            |  1,853,700  |  3.25e+10    |  119.5                  |  $245.91               |  7.57e-09      |
+
+
 
 > Note: These prices are based on a specific set of runs, at a particular time and location. Other price factors such as discounts, time of day, on-demand vs spot prices will affect your costs. Realized prices could be very different from these estimates, use them as a very rough estimate of scale.
 
