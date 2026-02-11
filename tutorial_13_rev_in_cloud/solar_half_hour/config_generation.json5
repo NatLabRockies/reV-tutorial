@@ -3,7 +3,7 @@
         "allocation": "na",
         "feature": "--exclusive",
         "option": "awspc",
-        "sites_per_worker": 375,
+        "sites_per_worker": 750,
         "sh_script": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/start_hsds.sh --log",
         "max_workers": 24,
         "walltime": 10,
@@ -13,7 +13,7 @@
         "conda_env": null,
         "keep_sh": true,  // This refers the SLURM submission script, not the start sh_script (HSDS here), don't worry
         "num_test_nodes": null,
-        "memory_utilization_limit": 0.4,
+        "memory_utilization_limit": 0.8,
         "timeout": 1800,
         "pool_size": null
     },
