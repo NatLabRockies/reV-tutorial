@@ -200,7 +200,7 @@ pcluster list-clusters
 Now that you have a running cluster and an SSH key pair, you may log in to your head node, but you need two more items. First, you need to locate the hostname (or private IP address) associated with this instance. The easiest way to do this is to use the AWS CLI to "describe" your instance and locate the appropriate entry in the response. The response is a large JSON dictionary of information and the IP address is present in several locations. You may use just the `aws ec2 describe-instances` command and find the "PrivateIpAddress" entry manually, or you may use something like the following command to filter the response down to a single line representing the address:
 
 ```bash
-aws ec2 describe-instances | grep PrivateIpAddress | tail -1 | awk '{print $2}'
+pcluster describe-cluster --cluster-name rev-pcluster | grep IpAddress | awk '{print $2}'
 ```
 
 Next, you'll need the username for the server. It is possible to add new user names to your instances (see, [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html)), but since we have not described that step here, you will likely need to use the default user for the OS you chose in the image configuration step. Below are the default user names associated with the three OS groups described in [section 4b](#4b-the-parallel-cluster-configuration-file) but you can find all default names in the "managing users" link above:
