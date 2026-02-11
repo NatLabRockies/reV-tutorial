@@ -20,7 +20,7 @@ if [ "$1" == "--log" ]; then
 fi
 
 # Set the location of the HSDS code directory
-export HSDS_DIR=$HOME
+export HSDS_DIR="$HOME/hsds"
 LOCAL_IMAGE=/scratch/hsds_docker_image.tar
 
 # Get this instance's ID and type (with Instance Meta Data Service (IMDS) V2 below, comment out and use V1 below if needed)
@@ -63,17 +63,18 @@ install_docker () {
     fi
 }
 
+
 # Stop server if requested
 if [[ $1 == "--stop" ]]; then
     echo "Stopping HSDS server."
-    cd $HSDS_DIR/hsds
+    cd $HSDS_DIR
     ./runall.sh --stop
     exit 0
 fi
 
 # Start script with first message to user
 thisfile=$(realpath $0)
-echo "Running $thisfile on $EC2_ID ($EC2_TYPE) from $HSDS_DIR..."
+echo "Running $thisfile on $EC2_ID ($EC2_TYPE) from $PWD..."
 
 # First check to see if HSDS is running
 check_hsds
@@ -83,10 +84,10 @@ if [ "$hsds_running" = true ]; then
     exit 0
 else
     # Clone HSDS repository if not found
-    if [ ! -d $HSDS_DIR/hsds ]; then
+    if [ ! -d $HSDS_DIR ]; then
         echo "$HSDS_DIR not found, cloning https://github.com/HDFGroup/hsds.git..."
-        git clone https://github.com/HDFGroup/hsds.git
-        cd $HSDS_DIR/hsds
+        git clone https://github.com/HDFGroup/hsds.git $HSDS_DIR
+        cd $HSDS_DIR
     fi
 
     # Install Docker if not found
@@ -106,9 +107,9 @@ else
 
         # Start HSDS
         echo "Starting local HSDS server..."
-        cd $HSDS_DIR/hsds  || exit 1
-        ./runall.sh 24
-        # ./runall.sh "$(nproc --all)"
+        cd $HSDS_DIR  || exit 1
+        echo $PWD
+        ./runall.sh "$(nproc --all)"
 
         # Save image to a local file if it hasn't been already
         if [[ ! -f $LOCAL_IMAGE ]]; then
@@ -122,7 +123,7 @@ else
     fi
 
     # Give HSDS a chance to warm up (not sure why but this helps a ton!)
-    sleep 10s
+    sleep 15s
 
 fi
 
