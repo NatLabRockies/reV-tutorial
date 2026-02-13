@@ -270,7 +270,7 @@ arev
     > Note: Be careful about defining your AWS and HSDS environment variables. These can be defined in many places and can result in unexpected behavior if they aren’t aligned. Some of those places include: the HSDS config: `~/.hscfg`, your `~/.bashrc` file or any other script it runs, the `start_hsds.sh` Bash script, or the parameter override configuration file (`~/hsds/admin/config/override.yml`).
     > Note: If you are using a Single Sign-On (SSO) authentication method, you will also need an IAM user assigned to you since HSDS fails without this authentication procedure. In this case, you'll need to unset the `AWS_SESSION_TOKEN` variable before declaring the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` variables from the IAM user.
 
-4. Test your HSDS local server configuration on your head node. The start HSDS script will run a quick access test on an example NRL resource file, but you may also run any of the subsequent command after it has finished to double check:
+4. Test your HSDS local server configuration on your head node. The start HSDS script will run a quick access test on an example NLR resource file, but you may also run any of the subsequent command after it has finished to double check:
 
     - Run the start script: `./start_hsds.sh`
     - Run `docker ps` and verify that there are active HSDS services (hsds_rangeget_1, hsds_sn_1, hsds_head_1, and an hsds_dn_* node for every available core). 
