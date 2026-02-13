@@ -1,0 +1,662 @@
+gaps (DEBUG) - [config.py:131] : Validating '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/config_generation.json5'
+gaps (INFO) - [config.py:231] : Running generation from config file: '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/config_generation.json5'
+gaps (INFO) - [config.py:236] : Target output directory: '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour'
+gaps (INFO) - [config.py:237] : Target logging directory: '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs'
+INFO - 2026-02-11 19:53:42,275 [cli_functions.py:32] : Initialized reV/rex verbose loggers with name 'solar_half_hour_generation' and log directory '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs'
+INFO - 2026-02-11 19:53:42,275 [cli_gen.py:99] : The following project points were specified: "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/project_points_10pct.csv"
+INFO - 2026-02-11 19:53:42,275 [cli_gen.py:101] : The following SAM configs are available to this run:
+{   'default': '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/pvwattsv8.json5'}
+INFO - 2026-02-11 19:53:42,275 [cli_gen.py:104] : The following is being used for site specific input data: "None"
+gaps (DEBUG) - [execution.py:153] : Submitting the following command:
+python -c 'from gaps.cli.config import run_with_status_updates; from reV.generation.generation import Gen; su_args = "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour", "generation", "solar_half_hour_generation"; run_with_status_updates(   Gen, {"technology": "pvwattsv8", "project_points": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/project_points_10pct.csv", "sam_files": {"default": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/pvwattsv8.json5"}, "resource_file": "/nrel/nsrdb/GOES/aggregated/v4.0.0/nsrdb_2018.h5", "low_res_resource_file": None, "output_request": ["cf_profile", "cf_profile_ac", "cf_mean", "cf_mean_ac", "ghi_mean", "lcoe_fcr", "ac", "dc", "clipped_power", "capital_cost", "fixed_operating_cost", "system_capacity", "system_capacity_ac", "fixed_charge_rate", "variable_operating_cost", "dc_ac_ratio"], "site_data": None, "curtailment": None, "gid_map": None, "drop_leap": False, "scale_outputs": True, "write_mapped_gids": False, "bias_correct": None, "analysis_years": [2018], "project_points_split_range": [0, 54694], "tag": "", "command_name": "generation", "pipeline_step": "generation", "config_file": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/config_generation.json5", "project_dir": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour", "job_name": "solar_half_hour_generation", "out_dir": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour", "out_fpath": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation", "run_method": "run", "max_workers": 46, "sites_per_worker": 200, "memory_utilization_limit": 0.4, "timeout": 1800, "pool_size": None}, {"name": "solar_half_hour_generation", "log_directory": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs", "verbose": True, "node": True}, su_args,    ["project_points"])'
+gaps (DEBUG) - [hpc.py:554] : The shell script 'solar_half_hour_generation.sh' contains the following:
+~~~~~~~~~~ solar_half_hour_generation.sh ~~~~~~~~~~
+#!/bin/bash
+#SBATCH --account=na
+#SBATCH --time=10:00:00
+#SBATCH --job-name=solar_half_hour_generation  # job name
+#SBATCH --nodes=1  # number of nodes
+#SBATCH --output=/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs/stdout/solar_half_hour_generation_%j.o
+#SBATCH --error=/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs/stdout/solar_half_hour_generation_%j.e
+#SBATCH --qos=normal
+#SBATCH --exclusive  # extra feature
+echo Running on: $HOSTNAME, Machine Type: $MACHTYPE
+echo Running python in directory `which python`
+/scratch/reV-tutorial/tutorial_13_rev_in_cloud/start_hsds.sh --log
+python -c 'from gaps.cli.config import run_with_status_updates; from reV.generation.generation import Gen; su_args = "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour", "generation", "solar_half_hour_generation"; run_with_status_updates(   Gen, {"technology": "pvwattsv8", "project_points": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/project_points_10pct.csv", "sam_files": {"default": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/pvwattsv8.json5"}, "resource_file": "/nrel/nsrdb/GOES/aggregated/v4.0.0/nsrdb_2018.h5", "low_res_resource_file": None, "output_request": ["cf_profile", "cf_profile_ac", "cf_mean", "cf_mean_ac", "ghi_mean", "lcoe_fcr", "ac", "dc", "clipped_power", "capital_cost", "fixed_operating_cost", "system_capacity", "system_capacity_ac", "fixed_charge_rate", "variable_operating_cost", "dc_ac_ratio"], "site_data": None, "curtailment": None, "gid_map": None, "drop_leap": False, "scale_outputs": True, "write_mapped_gids": False, "bias_correct": None, "analysis_years": [2018], "project_points_split_range": [0, 54694], "tag": "", "command_name": "generation", "pipeline_step": "generation", "config_file": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/config_generation.json5", "project_dir": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour", "job_name": "solar_half_hour_generation", "out_dir": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour", "out_fpath": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation", "run_method": "run", "max_workers": 46, "sites_per_worker": 200, "memory_utilization_limit": 0.4, "timeout": 1800, "pool_size": None}, {"name": "solar_half_hour_generation", "log_directory": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs", "verbose": True, "node": True}, su_args,    ["project_points"])'
+~~~~~~~~~~ solar_half_hour_generation.sh ~~~~~~~~~~
+gaps (DEBUG) - [hpc.py:260] : Job 'solar_half_hour_generation' with id #447 submitted successfully
+gaps (INFO) - [execution.py:178] : Kicked off 'generation' job 'solar_half_hour_generation' (Job ID #447) on AWS PC.
+DEBUG - 2026-02-11 19:54:26,345 [config.py:646] : Initializing 'Gen' with kwargs: {'technology': 'pvwattsv8', 'project_points': ProjectPoints with 54694 sites from gid 590 through 174420, 'sam_files': {'default': '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/pvwattsv8.json5'}, 'resource_file': '/nrel/nsrdb/GOES/aggregated/v4.0.0/nsrdb_2018.h5', 'low_res_resource_file': None, 'output_request': ['cf_profile', 'cf_profile_ac', 'cf_mean', 'cf_mean_ac', 'ghi_mean', 'lcoe_fcr', 'ac', 'dc', 'clipped_power', 'capital_cost', 'fixed_operating_cost', 'system_capacity', 'system_capacity_ac', 'fixed_charge_rate', 'variable_operating_cost', 'dc_ac_ratio'], 'site_data': None, 'curtailment': None, 'gid_map': None, 'drop_leap': False, 'scale_outputs': True, 'write_mapped_gids': False, 'bias_correct': None, 'sites_per_worker': 200, 'memory_utilization_limit': 0.4}
+DEBUG - 2026-02-11 19:54:26,351 [status.py:798] : Received job attributes: {   'bias_correct': None,
+    'curtailment': None,
+    'drop_leap': False,
+    'gid_map': None,
+    'low_res_resource_file': None,
+    'memory_utilization_limit': 0.4,
+    'output_request': [   'cf_profile',
+                          'cf_profile_ac',
+                          'cf_mean',
+                          'cf_mean_ac',
+                          'ghi_mean',
+                          'lcoe_fcr',
+                          'ac',
+                          'dc',
+                          'clipped_power',
+                          'capital_cost',
+                          'fixed_operating_cost',
+                          'system_capacity',
+                          'system_capacity_ac',
+                          'fixed_charge_rate',
+                          'variable_operating_cost',
+                          'dc_ac_ratio'],
+    'resource_file': '/nrel/nsrdb/GOES/aggregated/v4.0.0/nsrdb_2018.h5',
+    'sam_files': {   'default': '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/pvwattsv8.json5'},
+    'scale_outputs': True,
+    'site_data': None,
+    'sites_per_worker': 200,
+    'technology': 'pvwattsv8',
+    'write_mapped_gids': False}
+DEBUG - 2026-02-11 19:54:26,356 [base.py:663] : Sites per worker being set to 200 for PointsControl.
+INFO - 2026-02-11 19:54:26,368 [__init__.py:668] : Running with reV version 0.14.5
+INFO - 2026-02-11 19:54:26,368 [loggers.py:600] : Running with rex version 0.4.3
+DEBUG - 2026-02-11 19:54:26,368 [loggers.py:601] : - h5py version 3.15.1
+DEBUG - 2026-02-11 19:54:26,368 [loggers.py:602] : - numpy version 2.3.5
+DEBUG - 2026-02-11 19:54:26,368 [loggers.py:603] : - pandas version 2.3.3
+DEBUG - 2026-02-11 19:54:26,368 [loggers.py:604] : - scipy version 1.17.0
+DEBUG - 2026-02-11 19:54:26,368 [__init__.py:670] : - PySAM version 7.0.0
+DEBUG - 2026-02-11 19:54:26,391 [output_request.py:48] : Did not recognize requested output variable "cf_profile_ac". Passing forward, but this may cause a downstream error. Available known output variables are: ['capital_cost', 'fixed_charge_rate', 'turbine_cost', 'clipped_power', 'gen_profile', 'dni_mean', 'system_capacity', 'bos_cost', 'surface_albedo', 'variable_operating_cost', 'annual_wake_loss_internal_percent', 'ws_mean', 'lcoe_real', 'wake_loss_internal_kW', 'lcoe_fcr', 'lcoe_nom', 'total_installed_cost', 'ghi_mean', 'winddirection', 'fixed_operating_cost', 'cf_mean', 'cf_profile', 'dc', 'annual_energy', 'energy_yield', 'ac', 'wake_loss_internal_percent', 'flip_actual_irr', 'sales_tax_cost', 'annual_wake_loss_total_percent', 'ppa_price', 'gross_revenue', 'poa', 'project_return_aftertax_npv']
+DEBUG - 2026-02-11 19:54:26,391 [output_request.py:48] : Did not recognize requested output variable "cf_mean_ac". Passing forward, but this may cause a downstream error. Available known output variables are: ['capital_cost', 'fixed_charge_rate', 'turbine_cost', 'clipped_power', 'gen_profile', 'dni_mean', 'system_capacity', 'bos_cost', 'surface_albedo', 'variable_operating_cost', 'annual_wake_loss_internal_percent', 'ws_mean', 'lcoe_real', 'wake_loss_internal_kW', 'lcoe_fcr', 'lcoe_nom', 'total_installed_cost', 'ghi_mean', 'winddirection', 'fixed_operating_cost', 'cf_mean', 'cf_profile', 'dc', 'annual_energy', 'energy_yield', 'ac', 'wake_loss_internal_percent', 'flip_actual_irr', 'sales_tax_cost', 'annual_wake_loss_total_percent', 'ppa_price', 'gross_revenue', 'poa', 'project_return_aftertax_npv']
+DEBUG - 2026-02-11 19:54:26,391 [output_request.py:48] : Did not recognize requested output variable "system_capacity_ac". Passing forward, but this may cause a downstream error. Available known output variables are: ['capital_cost', 'fixed_charge_rate', 'turbine_cost', 'clipped_power', 'gen_profile', 'dni_mean', 'system_capacity', 'bos_cost', 'surface_albedo', 'variable_operating_cost', 'annual_wake_loss_internal_percent', 'ws_mean', 'lcoe_real', 'wake_loss_internal_kW', 'lcoe_fcr', 'lcoe_nom', 'total_installed_cost', 'ghi_mean', 'winddirection', 'fixed_operating_cost', 'cf_mean', 'cf_profile', 'dc', 'annual_energy', 'energy_yield', 'ac', 'wake_loss_internal_percent', 'flip_actual_irr', 'sales_tax_cost', 'annual_wake_loss_total_percent', 'ppa_price', 'gross_revenue', 'poa', 'project_return_aftertax_npv']
+DEBUG - 2026-02-11 19:54:26,391 [output_request.py:48] : Did not recognize requested output variable "dc_ac_ratio". Passing forward, but this may cause a downstream error. Available known output variables are: ['capital_cost', 'fixed_charge_rate', 'turbine_cost', 'clipped_power', 'gen_profile', 'dni_mean', 'system_capacity', 'bos_cost', 'surface_albedo', 'variable_operating_cost', 'annual_wake_loss_internal_percent', 'ws_mean', 'lcoe_real', 'wake_loss_internal_kW', 'lcoe_fcr', 'lcoe_nom', 'total_installed_cost', 'ghi_mean', 'winddirection', 'fixed_operating_cost', 'cf_mean', 'cf_profile', 'dc', 'annual_energy', 'energy_yield', 'ac', 'wake_loss_internal_percent', 'flip_actual_irr', 'sales_tax_cost', 'annual_wake_loss_total_percent', 'ppa_price', 'gross_revenue', 'poa', 'project_return_aftertax_npv']
+DEBUG - 2026-02-11 19:54:26,392 [generation.py:1011] : User output request "dc_ac_ratio" not recognized. Will attempt to extract from PySAM.
+DEBUG - 2026-02-11 19:54:26,907 [config.py:646] : Running 'run' with kwargs: {'out_fpath': '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation', 'max_workers': 46, 'timeout': 1800, 'pool_size': None}
+INFO - 2026-02-11 19:54:27,401 [base.py:1010] : Initializing full output file: "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation_2018.h5" with mode: w
+DEBUG - 2026-02-11 19:54:29,787 [outputs.py:1002] : Initializing output file: /scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation_2018.h5
+DEBUG - 2026-02-11 19:54:30,017 [outputs.py:1022] : 	- Configurations saved as attributes on 'meta'
+DEBUG - 2026-02-11 19:54:30,021 [outputs.py:1025] : Output file has been initialized.
+INFO - 2026-02-11 19:54:30,023 [base.py:242] : Output results from a single site are calculated to use 0.0 KB of memory.
+INFO - 2026-02-11 19:54:30,023 [base.py:204] : Limited to storing 141344 sites in memory (99.1 GB total hardware, 39.6 GB available with 40.0% utilization).
+INFO - 2026-02-11 19:54:30,025 [base.py:1087] : Initializing in-memory outputs for 54694 sites with gids 590 through 174420 inclusive (site list index 0 through 54693)
+INFO - 2026-02-11 19:54:30,028 [generation.py:1095] : Running reV generation for: PointsControl with 54694 sites from gid 590 through 174420
+DEBUG - 2026-02-11 19:54:30,031 [generation.py:1098] : The following project points were specified: "ProjectPoints with 54694 sites from gid 590 through 174420"
+DEBUG - 2026-02-11 19:54:30,031 [generation.py:1103] : The following SAM configs are available to this run:
+{   'default': {   'array_type': 2,
+                   'azimuth': 180,
+                   'capital_cost': 779.1,
+                   'clearsky': None,
+                   'dc_ac_ratio': 1.34,
+                   'fixed_charge_rate': 0.0641,
+                   'fixed_operating_cost': 13.43,
+                   'gcr': 0.4,
+                   'inv_eff': 98,
+                   'losses': 10.4,
+                   'module': 'pvwattsv8',
+                   'module_type': 0,
+                   'system_capacity': 1,
+                   'tilt': 0,
+                   'variable_operating_cost': 0}}
+DEBUG - 2026-02-11 19:54:30,031 [generation.py:1108] : The SAM output variables have been requested:
+['capital_cost', 'fixed_charge_rate', 'clipped_power', 'capital_cost_multiplier', 'system_capacity', 'variable_operating_cost', 'lcoe_fcr', 'base_fixed_operating_cost', 'base_variable_operating_cost', 'system_capacity_ac', 'cf_mean_ac', 'ghi_mean', 'fixed_operating_cost', 'base_capital_cost', 'cf_profile', 'dc', 'cf_mean', 'cf_profile_ac', 'dc_ac_ratio', 'ac']
+DEBUG - 2026-02-11 19:54:30,034 [generation.py:1132] : Running parallel generation for: PointsControl with 54694 sites from gid 590 through 174420
+INFO - 2026-02-11 19:54:30,034 [base.py:1330] : Running parallel execution with max_workers=46
+DEBUG - 2026-02-11 19:54:30,037 [project_points.py:55] : PointsControl iterator initializing with sites 590 through 174420
+DEBUG - 2026-02-11 19:54:30,458 [project_points.py:80] : PointsControl stopped iteration at attempted index of 54694. Length of iterator is: 274
+DEBUG - 2026-02-11 19:54:30,458 [project_points.py:102] : PointsControl passing site project points with indices 0 to 200 on iteration #0 
+DEBUG - 2026-02-11 19:54:30,458 [project_points.py:102] : PointsControl passing site project points with indices 200 to 400 on iteration #1 
+DEBUG - 2026-02-11 19:54:30,458 [project_points.py:102] : PointsControl passing site project points with indices 400 to 600 on iteration #2 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 600 to 800 on iteration #3 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 800 to 1000 on iteration #4 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 1000 to 1200 on iteration #5 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 1200 to 1400 on iteration #6 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 1400 to 1600 on iteration #7 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 1600 to 1800 on iteration #8 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 1800 to 2000 on iteration #9 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 2000 to 2200 on iteration #10 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 2200 to 2400 on iteration #11 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 2400 to 2600 on iteration #12 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 2600 to 2800 on iteration #13 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 2800 to 3000 on iteration #14 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 3000 to 3200 on iteration #15 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 3200 to 3400 on iteration #16 
+DEBUG - 2026-02-11 19:54:30,459 [project_points.py:102] : PointsControl passing site project points with indices 3400 to 3600 on iteration #17 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 3600 to 3800 on iteration #18 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 3800 to 4000 on iteration #19 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 4000 to 4200 on iteration #20 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 4200 to 4400 on iteration #21 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 4400 to 4600 on iteration #22 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 4600 to 4800 on iteration #23 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 4800 to 5000 on iteration #24 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 5000 to 5200 on iteration #25 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 5200 to 5400 on iteration #26 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 5400 to 5600 on iteration #27 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 5600 to 5800 on iteration #28 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 5800 to 6000 on iteration #29 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 6000 to 6200 on iteration #30 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 6200 to 6400 on iteration #31 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 6400 to 6600 on iteration #32 
+DEBUG - 2026-02-11 19:54:30,460 [project_points.py:102] : PointsControl passing site project points with indices 6600 to 6800 on iteration #33 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 6800 to 7000 on iteration #34 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 7000 to 7200 on iteration #35 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 7200 to 7400 on iteration #36 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 7400 to 7600 on iteration #37 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 7600 to 7800 on iteration #38 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 7800 to 8000 on iteration #39 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 8000 to 8200 on iteration #40 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 8200 to 8400 on iteration #41 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 8400 to 8600 on iteration #42 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 8600 to 8800 on iteration #43 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 8800 to 9000 on iteration #44 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 9000 to 9200 on iteration #45 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 9200 to 9400 on iteration #46 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 9400 to 9600 on iteration #47 
+DEBUG - 2026-02-11 19:54:30,461 [project_points.py:102] : PointsControl passing site project points with indices 9600 to 9800 on iteration #48 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 9800 to 10000 on iteration #49 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 10000 to 10200 on iteration #50 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 10200 to 10400 on iteration #51 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 10400 to 10600 on iteration #52 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 10600 to 10800 on iteration #53 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 10800 to 11000 on iteration #54 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 11000 to 11200 on iteration #55 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 11200 to 11400 on iteration #56 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 11400 to 11600 on iteration #57 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 11600 to 11800 on iteration #58 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 11800 to 12000 on iteration #59 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 12000 to 12200 on iteration #60 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 12200 to 12400 on iteration #61 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 12400 to 12600 on iteration #62 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 12600 to 12800 on iteration #63 
+DEBUG - 2026-02-11 19:54:30,462 [project_points.py:102] : PointsControl passing site project points with indices 12800 to 13000 on iteration #64 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 13000 to 13200 on iteration #65 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 13200 to 13400 on iteration #66 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 13400 to 13600 on iteration #67 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 13600 to 13800 on iteration #68 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 13800 to 14000 on iteration #69 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 14000 to 14200 on iteration #70 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 14200 to 14400 on iteration #71 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 14400 to 14600 on iteration #72 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 14600 to 14800 on iteration #73 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 14800 to 15000 on iteration #74 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 15000 to 15200 on iteration #75 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 15200 to 15400 on iteration #76 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 15400 to 15600 on iteration #77 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 15600 to 15800 on iteration #78 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 15800 to 16000 on iteration #79 
+DEBUG - 2026-02-11 19:54:30,463 [project_points.py:102] : PointsControl passing site project points with indices 16000 to 16200 on iteration #80 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 16200 to 16400 on iteration #81 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 16400 to 16600 on iteration #82 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 16600 to 16800 on iteration #83 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 16800 to 17000 on iteration #84 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 17000 to 17200 on iteration #85 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 17200 to 17400 on iteration #86 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 17400 to 17600 on iteration #87 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 17600 to 17800 on iteration #88 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 17800 to 18000 on iteration #89 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 18000 to 18200 on iteration #90 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 18200 to 18400 on iteration #91 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 18400 to 18600 on iteration #92 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 18600 to 18800 on iteration #93 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 18800 to 19000 on iteration #94 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 19000 to 19200 on iteration #95 
+DEBUG - 2026-02-11 19:54:30,464 [project_points.py:102] : PointsControl passing site project points with indices 19200 to 19400 on iteration #96 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 19400 to 19600 on iteration #97 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 19600 to 19800 on iteration #98 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 19800 to 20000 on iteration #99 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 20000 to 20200 on iteration #100 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 20200 to 20400 on iteration #101 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 20400 to 20600 on iteration #102 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 20600 to 20800 on iteration #103 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 20800 to 21000 on iteration #104 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 21000 to 21200 on iteration #105 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 21200 to 21400 on iteration #106 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 21400 to 21600 on iteration #107 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 21600 to 21800 on iteration #108 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 21800 to 22000 on iteration #109 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 22000 to 22200 on iteration #110 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 22200 to 22400 on iteration #111 
+DEBUG - 2026-02-11 19:54:30,465 [project_points.py:102] : PointsControl passing site project points with indices 22400 to 22600 on iteration #112 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 22600 to 22800 on iteration #113 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 22800 to 23000 on iteration #114 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 23000 to 23200 on iteration #115 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 23200 to 23400 on iteration #116 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 23400 to 23600 on iteration #117 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 23600 to 23800 on iteration #118 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 23800 to 24000 on iteration #119 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 24000 to 24200 on iteration #120 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 24200 to 24400 on iteration #121 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 24400 to 24600 on iteration #122 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 24600 to 24800 on iteration #123 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 24800 to 25000 on iteration #124 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 25000 to 25200 on iteration #125 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 25200 to 25400 on iteration #126 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 25400 to 25600 on iteration #127 
+DEBUG - 2026-02-11 19:54:30,466 [project_points.py:102] : PointsControl passing site project points with indices 25600 to 25800 on iteration #128 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 25800 to 26000 on iteration #129 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 26000 to 26200 on iteration #130 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 26200 to 26400 on iteration #131 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 26400 to 26600 on iteration #132 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 26600 to 26800 on iteration #133 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 26800 to 27000 on iteration #134 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 27000 to 27200 on iteration #135 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 27200 to 27400 on iteration #136 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 27400 to 27600 on iteration #137 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 27600 to 27800 on iteration #138 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 27800 to 28000 on iteration #139 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 28000 to 28200 on iteration #140 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 28200 to 28400 on iteration #141 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 28400 to 28600 on iteration #142 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 28600 to 28800 on iteration #143 
+DEBUG - 2026-02-11 19:54:30,467 [project_points.py:102] : PointsControl passing site project points with indices 28800 to 29000 on iteration #144 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 29000 to 29200 on iteration #145 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 29200 to 29400 on iteration #146 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 29400 to 29600 on iteration #147 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 29600 to 29800 on iteration #148 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 29800 to 30000 on iteration #149 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 30000 to 30200 on iteration #150 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 30200 to 30400 on iteration #151 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 30400 to 30600 on iteration #152 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 30600 to 30800 on iteration #153 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 30800 to 31000 on iteration #154 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 31000 to 31200 on iteration #155 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 31200 to 31400 on iteration #156 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 31400 to 31600 on iteration #157 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 31600 to 31800 on iteration #158 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 31800 to 32000 on iteration #159 
+DEBUG - 2026-02-11 19:54:30,468 [project_points.py:102] : PointsControl passing site project points with indices 32000 to 32200 on iteration #160 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 32200 to 32400 on iteration #161 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 32400 to 32600 on iteration #162 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 32600 to 32800 on iteration #163 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 32800 to 33000 on iteration #164 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 33000 to 33200 on iteration #165 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 33200 to 33400 on iteration #166 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 33400 to 33600 on iteration #167 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 33600 to 33800 on iteration #168 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 33800 to 34000 on iteration #169 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 34000 to 34200 on iteration #170 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 34200 to 34400 on iteration #171 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 34400 to 34600 on iteration #172 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 34600 to 34800 on iteration #173 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 34800 to 35000 on iteration #174 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 35000 to 35200 on iteration #175 
+DEBUG - 2026-02-11 19:54:30,469 [project_points.py:102] : PointsControl passing site project points with indices 35200 to 35400 on iteration #176 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 35400 to 35600 on iteration #177 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 35600 to 35800 on iteration #178 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 35800 to 36000 on iteration #179 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 36000 to 36200 on iteration #180 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 36200 to 36400 on iteration #181 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 36400 to 36600 on iteration #182 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 36600 to 36800 on iteration #183 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 36800 to 37000 on iteration #184 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 37000 to 37200 on iteration #185 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 37200 to 37400 on iteration #186 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 37400 to 37600 on iteration #187 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 37600 to 37800 on iteration #188 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 37800 to 38000 on iteration #189 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 38000 to 38200 on iteration #190 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 38200 to 38400 on iteration #191 
+DEBUG - 2026-02-11 19:54:30,470 [project_points.py:102] : PointsControl passing site project points with indices 38400 to 38600 on iteration #192 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 38600 to 38800 on iteration #193 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 38800 to 39000 on iteration #194 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 39000 to 39200 on iteration #195 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 39200 to 39400 on iteration #196 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 39400 to 39600 on iteration #197 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 39600 to 39800 on iteration #198 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 39800 to 40000 on iteration #199 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 40000 to 40200 on iteration #200 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 40200 to 40400 on iteration #201 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 40400 to 40600 on iteration #202 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 40600 to 40800 on iteration #203 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 40800 to 41000 on iteration #204 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 41000 to 41200 on iteration #205 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 41200 to 41400 on iteration #206 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 41400 to 41600 on iteration #207 
+DEBUG - 2026-02-11 19:54:30,471 [project_points.py:102] : PointsControl passing site project points with indices 41600 to 41800 on iteration #208 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 41800 to 42000 on iteration #209 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 42000 to 42200 on iteration #210 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 42200 to 42400 on iteration #211 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 42400 to 42600 on iteration #212 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 42600 to 42800 on iteration #213 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 42800 to 43000 on iteration #214 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 43000 to 43200 on iteration #215 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 43200 to 43400 on iteration #216 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 43400 to 43600 on iteration #217 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 43600 to 43800 on iteration #218 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 43800 to 44000 on iteration #219 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 44000 to 44200 on iteration #220 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 44200 to 44400 on iteration #221 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 44400 to 44600 on iteration #222 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 44600 to 44800 on iteration #223 
+DEBUG - 2026-02-11 19:54:30,472 [project_points.py:102] : PointsControl passing site project points with indices 44800 to 45000 on iteration #224 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 45000 to 45200 on iteration #225 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 45200 to 45400 on iteration #226 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 45400 to 45600 on iteration #227 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 45600 to 45800 on iteration #228 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 45800 to 46000 on iteration #229 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 46000 to 46200 on iteration #230 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 46200 to 46400 on iteration #231 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 46400 to 46600 on iteration #232 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 46600 to 46800 on iteration #233 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 46800 to 47000 on iteration #234 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 47000 to 47200 on iteration #235 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 47200 to 47400 on iteration #236 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 47400 to 47600 on iteration #237 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 47600 to 47800 on iteration #238 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 47800 to 48000 on iteration #239 
+DEBUG - 2026-02-11 19:54:30,473 [project_points.py:102] : PointsControl passing site project points with indices 48000 to 48200 on iteration #240 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 48200 to 48400 on iteration #241 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 48400 to 48600 on iteration #242 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 48600 to 48800 on iteration #243 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 48800 to 49000 on iteration #244 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 49000 to 49200 on iteration #245 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 49200 to 49400 on iteration #246 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 49400 to 49600 on iteration #247 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 49600 to 49800 on iteration #248 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 49800 to 50000 on iteration #249 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 50000 to 50200 on iteration #250 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 50200 to 50400 on iteration #251 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 50400 to 50600 on iteration #252 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 50600 to 50800 on iteration #253 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 50800 to 51000 on iteration #254 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 51000 to 51200 on iteration #255 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 51200 to 51400 on iteration #256 
+DEBUG - 2026-02-11 19:54:30,474 [project_points.py:102] : PointsControl passing site project points with indices 51400 to 51600 on iteration #257 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 51600 to 51800 on iteration #258 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 51800 to 52000 on iteration #259 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 52000 to 52200 on iteration #260 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 52200 to 52400 on iteration #261 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 52400 to 52600 on iteration #262 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 52600 to 52800 on iteration #263 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 52800 to 53000 on iteration #264 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 53000 to 53200 on iteration #265 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 53200 to 53400 on iteration #266 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 53400 to 53600 on iteration #267 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 53600 to 53800 on iteration #268 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 53800 to 54000 on iteration #269 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 54000 to 54200 on iteration #270 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 54200 to 54400 on iteration #271 
+DEBUG - 2026-02-11 19:54:30,475 [project_points.py:102] : PointsControl passing site project points with indices 54400 to 54600 on iteration #272 
+DEBUG - 2026-02-11 19:54:30,476 [project_points.py:102] : PointsControl passing site project points with indices 54600 to 54694 on iteration #273 
+DEBUG - 2026-02-11 19:54:30,476 [base.py:1278] : Pre-splitting points control into 6 chunks with the following chunk sizes: [48, 48, 48, 48, 48, 34]
+DEBUG - 2026-02-11 19:54:30,476 [base.py:1338] : Starting process pool for points control iteration 1 out of 6
+INFO - 2026-02-11 19:56:33,974 [base.py:1385] : Parallel run at iteration 1 out of 274. Memory utilization is 75.121 GB out of 99.083 GB total (75.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:56:39,249 [base.py:1385] : Parallel run at iteration 2 out of 274. Memory utilization is 74.888 GB out of 99.083 GB total (75.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:56:44,531 [base.py:1385] : Parallel run at iteration 3 out of 274. Memory utilization is 74.694 GB out of 99.083 GB total (75.4% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:56:49,821 [base.py:1385] : Parallel run at iteration 4 out of 274. Memory utilization is 74.473 GB out of 99.083 GB total (75.2% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:56:55,126 [base.py:1385] : Parallel run at iteration 5 out of 274. Memory utilization is 74.333 GB out of 99.083 GB total (75.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:00,433 [base.py:1385] : Parallel run at iteration 6 out of 274. Memory utilization is 74.277 GB out of 99.083 GB total (75.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:05,496 [base.py:1385] : Parallel run at iteration 7 out of 274. Memory utilization is 74.451 GB out of 99.083 GB total (75.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:10,396 [base.py:1385] : Parallel run at iteration 8 out of 274. Memory utilization is 74.351 GB out of 99.083 GB total (75.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:15,750 [base.py:1385] : Parallel run at iteration 9 out of 274. Memory utilization is 74.247 GB out of 99.083 GB total (74.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:21,127 [base.py:1385] : Parallel run at iteration 10 out of 274. Memory utilization is 74.172 GB out of 99.083 GB total (74.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:26,481 [base.py:1385] : Parallel run at iteration 11 out of 274. Memory utilization is 74.069 GB out of 99.083 GB total (74.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:31,844 [base.py:1385] : Parallel run at iteration 12 out of 274. Memory utilization is 74.007 GB out of 99.083 GB total (74.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:37,219 [base.py:1385] : Parallel run at iteration 13 out of 274. Memory utilization is 73.958 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:42,599 [base.py:1385] : Parallel run at iteration 14 out of 274. Memory utilization is 73.908 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:47,987 [base.py:1385] : Parallel run at iteration 15 out of 274. Memory utilization is 73.892 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:53,384 [base.py:1385] : Parallel run at iteration 16 out of 274. Memory utilization is 73.877 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:57:58,800 [base.py:1385] : Parallel run at iteration 17 out of 274. Memory utilization is 73.887 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:04,232 [base.py:1385] : Parallel run at iteration 18 out of 274. Memory utilization is 73.870 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:09,669 [base.py:1385] : Parallel run at iteration 19 out of 274. Memory utilization is 73.870 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:15,113 [base.py:1385] : Parallel run at iteration 20 out of 274. Memory utilization is 73.870 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:20,566 [base.py:1385] : Parallel run at iteration 21 out of 274. Memory utilization is 73.871 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:26,025 [base.py:1385] : Parallel run at iteration 22 out of 274. Memory utilization is 73.871 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:31,496 [base.py:1385] : Parallel run at iteration 23 out of 274. Memory utilization is 73.873 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:36,976 [base.py:1385] : Parallel run at iteration 24 out of 274. Memory utilization is 73.870 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:42,452 [base.py:1385] : Parallel run at iteration 25 out of 274. Memory utilization is 73.871 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:47,939 [base.py:1385] : Parallel run at iteration 26 out of 274. Memory utilization is 73.872 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:53,441 [base.py:1385] : Parallel run at iteration 27 out of 274. Memory utilization is 73.872 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:58:58,947 [base.py:1385] : Parallel run at iteration 28 out of 274. Memory utilization is 73.888 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:04,456 [base.py:1385] : Parallel run at iteration 29 out of 274. Memory utilization is 73.941 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:09,972 [base.py:1385] : Parallel run at iteration 30 out of 274. Memory utilization is 73.902 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:15,516 [base.py:1385] : Parallel run at iteration 31 out of 274. Memory utilization is 73.889 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:21,055 [base.py:1385] : Parallel run at iteration 32 out of 274. Memory utilization is 73.839 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:26,593 [base.py:1385] : Parallel run at iteration 33 out of 274. Memory utilization is 73.828 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:32,147 [base.py:1385] : Parallel run at iteration 34 out of 274. Memory utilization is 73.877 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:37,703 [base.py:1385] : Parallel run at iteration 35 out of 274. Memory utilization is 73.831 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:43,303 [base.py:1385] : Parallel run at iteration 36 out of 274. Memory utilization is 73.861 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:48,886 [base.py:1385] : Parallel run at iteration 37 out of 274. Memory utilization is 73.826 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 19:59:54,495 [base.py:1385] : Parallel run at iteration 38 out of 274. Memory utilization is 73.904 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:00,080 [base.py:1385] : Parallel run at iteration 39 out of 274. Memory utilization is 73.880 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:05,701 [base.py:1385] : Parallel run at iteration 40 out of 274. Memory utilization is 73.878 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:11,341 [base.py:1385] : Parallel run at iteration 41 out of 274. Memory utilization is 73.937 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:16,971 [base.py:1385] : Parallel run at iteration 42 out of 274. Memory utilization is 73.826 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:22,587 [base.py:1385] : Parallel run at iteration 43 out of 274. Memory utilization is 73.887 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:28,250 [base.py:1385] : Parallel run at iteration 44 out of 274. Memory utilization is 73.866 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:33,977 [base.py:1385] : Parallel run at iteration 45 out of 274. Memory utilization is 73.931 GB out of 99.083 GB total (74.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:39,624 [base.py:1385] : Parallel run at iteration 46 out of 274. Memory utilization is 73.860 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:45,291 [base.py:1385] : Parallel run at iteration 47 out of 274. Memory utilization is 73.843 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:00:50,960 [base.py:1385] : Parallel run at iteration 48 out of 274. Memory utilization is 73.860 GB out of 99.083 GB total (74.5% used, intended limit of 40.0%)
+DEBUG - 2026-02-11 20:00:52,635 [base.py:1338] : Starting process pool for points control iteration 2 out of 6
+INFO - 2026-02-11 20:02:53,158 [base.py:1385] : Parallel run at iteration 49 out of 274. Memory utilization is 78.706 GB out of 99.083 GB total (79.4% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:02:57,128 [base.py:1385] : Parallel run at iteration 50 out of 274. Memory utilization is 78.977 GB out of 99.083 GB total (79.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:01,201 [base.py:1385] : Parallel run at iteration 51 out of 274. Memory utilization is 78.891 GB out of 99.083 GB total (79.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:05,292 [base.py:1385] : Parallel run at iteration 52 out of 274. Memory utilization is 78.480 GB out of 99.083 GB total (79.2% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:09,689 [base.py:1385] : Parallel run at iteration 53 out of 274. Memory utilization is 78.195 GB out of 99.083 GB total (78.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:13,558 [base.py:1385] : Parallel run at iteration 54 out of 274. Memory utilization is 78.047 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:17,456 [base.py:1385] : Parallel run at iteration 55 out of 274. Memory utilization is 78.046 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:21,349 [base.py:1385] : Parallel run at iteration 56 out of 274. Memory utilization is 78.048 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:25,454 [base.py:1385] : Parallel run at iteration 57 out of 274. Memory utilization is 78.334 GB out of 99.083 GB total (79.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:31,257 [base.py:1385] : Parallel run at iteration 58 out of 274. Memory utilization is 78.234 GB out of 99.083 GB total (79.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:36,990 [base.py:1385] : Parallel run at iteration 59 out of 274. Memory utilization is 78.238 GB out of 99.083 GB total (79.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:42,752 [base.py:1385] : Parallel run at iteration 60 out of 274. Memory utilization is 78.149 GB out of 99.083 GB total (78.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:48,526 [base.py:1385] : Parallel run at iteration 61 out of 274. Memory utilization is 78.097 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:03:54,321 [base.py:1385] : Parallel run at iteration 62 out of 274. Memory utilization is 78.098 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:00,124 [base.py:1385] : Parallel run at iteration 63 out of 274. Memory utilization is 78.147 GB out of 99.083 GB total (78.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:05,915 [base.py:1385] : Parallel run at iteration 64 out of 274. Memory utilization is 78.163 GB out of 99.083 GB total (78.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:11,764 [base.py:1385] : Parallel run at iteration 65 out of 274. Memory utilization is 78.072 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:17,584 [base.py:1385] : Parallel run at iteration 66 out of 274. Memory utilization is 78.130 GB out of 99.083 GB total (78.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:23,395 [base.py:1385] : Parallel run at iteration 67 out of 274. Memory utilization is 78.059 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:29,208 [base.py:1385] : Parallel run at iteration 68 out of 274. Memory utilization is 78.066 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:35,048 [base.py:1385] : Parallel run at iteration 69 out of 274. Memory utilization is 78.071 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:40,897 [base.py:1385] : Parallel run at iteration 70 out of 274. Memory utilization is 78.053 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:46,750 [base.py:1385] : Parallel run at iteration 71 out of 274. Memory utilization is 78.112 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:52,611 [base.py:1385] : Parallel run at iteration 72 out of 274. Memory utilization is 78.032 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:04:58,463 [base.py:1385] : Parallel run at iteration 73 out of 274. Memory utilization is 78.032 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:04,344 [base.py:1385] : Parallel run at iteration 74 out of 274. Memory utilization is 78.076 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:10,225 [base.py:1385] : Parallel run at iteration 75 out of 274. Memory utilization is 78.114 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:16,147 [base.py:1385] : Parallel run at iteration 76 out of 274. Memory utilization is 78.103 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:22,035 [base.py:1385] : Parallel run at iteration 77 out of 274. Memory utilization is 78.039 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:27,910 [base.py:1385] : Parallel run at iteration 78 out of 274. Memory utilization is 78.029 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:33,815 [base.py:1385] : Parallel run at iteration 79 out of 274. Memory utilization is 78.051 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:39,719 [base.py:1385] : Parallel run at iteration 80 out of 274. Memory utilization is 78.031 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:45,627 [base.py:1385] : Parallel run at iteration 81 out of 274. Memory utilization is 78.011 GB out of 99.083 GB total (78.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:51,536 [base.py:1385] : Parallel run at iteration 82 out of 274. Memory utilization is 78.019 GB out of 99.083 GB total (78.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:05:57,455 [base.py:1385] : Parallel run at iteration 83 out of 274. Memory utilization is 78.020 GB out of 99.083 GB total (78.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:03,391 [base.py:1385] : Parallel run at iteration 84 out of 274. Memory utilization is 78.011 GB out of 99.083 GB total (78.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:09,347 [base.py:1385] : Parallel run at iteration 85 out of 274. Memory utilization is 78.059 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:15,299 [base.py:1385] : Parallel run at iteration 86 out of 274. Memory utilization is 78.044 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:21,302 [base.py:1385] : Parallel run at iteration 87 out of 274. Memory utilization is 78.158 GB out of 99.083 GB total (78.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:27,268 [base.py:1385] : Parallel run at iteration 88 out of 274. Memory utilization is 78.075 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:33,257 [base.py:1385] : Parallel run at iteration 89 out of 274. Memory utilization is 78.050 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:39,247 [base.py:1385] : Parallel run at iteration 90 out of 274. Memory utilization is 78.050 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:45,241 [base.py:1385] : Parallel run at iteration 91 out of 274. Memory utilization is 78.060 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:51,250 [base.py:1385] : Parallel run at iteration 92 out of 274. Memory utilization is 78.020 GB out of 99.083 GB total (78.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:06:57,261 [base.py:1385] : Parallel run at iteration 93 out of 274. Memory utilization is 78.059 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:07:03,279 [base.py:1385] : Parallel run at iteration 94 out of 274. Memory utilization is 78.158 GB out of 99.083 GB total (78.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:07:09,304 [base.py:1385] : Parallel run at iteration 95 out of 274. Memory utilization is 78.079 GB out of 99.083 GB total (78.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:07:15,340 [base.py:1385] : Parallel run at iteration 96 out of 274. Memory utilization is 78.028 GB out of 99.083 GB total (78.7% used, intended limit of 40.0%)
+DEBUG - 2026-02-11 20:07:16,972 [base.py:1338] : Starting process pool for points control iteration 3 out of 6
+INFO - 2026-02-11 20:09:26,708 [base.py:1385] : Parallel run at iteration 97 out of 274. Memory utilization is 86.348 GB out of 99.083 GB total (87.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:09:31,179 [base.py:1385] : Parallel run at iteration 98 out of 274. Memory utilization is 86.225 GB out of 99.083 GB total (87.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:09:35,592 [base.py:1385] : Parallel run at iteration 99 out of 274. Memory utilization is 85.969 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:09:40,077 [base.py:1385] : Parallel run at iteration 100 out of 274. Memory utilization is 85.719 GB out of 99.083 GB total (86.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:09:44,360 [base.py:1385] : Parallel run at iteration 101 out of 274. Memory utilization is 85.684 GB out of 99.083 GB total (86.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:09:48,624 [base.py:1385] : Parallel run at iteration 102 out of 274. Memory utilization is 85.735 GB out of 99.083 GB total (86.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:09:52,908 [base.py:1385] : Parallel run at iteration 103 out of 274. Memory utilization is 85.795 GB out of 99.083 GB total (86.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:09:57,252 [base.py:1385] : Parallel run at iteration 104 out of 274. Memory utilization is 85.934 GB out of 99.083 GB total (86.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:01,731 [base.py:1385] : Parallel run at iteration 105 out of 274. Memory utilization is 86.230 GB out of 99.083 GB total (87.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:06,182 [base.py:1385] : Parallel run at iteration 106 out of 274. Memory utilization is 86.227 GB out of 99.083 GB total (87.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:10,511 [base.py:1385] : Parallel run at iteration 107 out of 274. Memory utilization is 86.201 GB out of 99.083 GB total (87.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:14,842 [base.py:1385] : Parallel run at iteration 108 out of 274. Memory utilization is 86.137 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:19,188 [base.py:1385] : Parallel run at iteration 109 out of 274. Memory utilization is 86.111 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:23,554 [base.py:1385] : Parallel run at iteration 110 out of 274. Memory utilization is 86.080 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:27,940 [base.py:1385] : Parallel run at iteration 111 out of 274. Memory utilization is 86.040 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:32,317 [base.py:1385] : Parallel run at iteration 112 out of 274. Memory utilization is 86.074 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:36,690 [base.py:1385] : Parallel run at iteration 113 out of 274. Memory utilization is 86.049 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:41,091 [base.py:1385] : Parallel run at iteration 114 out of 274. Memory utilization is 86.040 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:45,477 [base.py:1385] : Parallel run at iteration 115 out of 274. Memory utilization is 86.089 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:49,883 [base.py:1385] : Parallel run at iteration 116 out of 274. Memory utilization is 86.021 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:54,308 [base.py:1385] : Parallel run at iteration 117 out of 274. Memory utilization is 85.999 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:10:58,730 [base.py:1385] : Parallel run at iteration 118 out of 274. Memory utilization is 86.039 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:03,153 [base.py:1385] : Parallel run at iteration 119 out of 274. Memory utilization is 86.102 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:07,592 [base.py:1385] : Parallel run at iteration 120 out of 274. Memory utilization is 86.000 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:12,048 [base.py:1385] : Parallel run at iteration 121 out of 274. Memory utilization is 86.045 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:16,507 [base.py:1385] : Parallel run at iteration 122 out of 274. Memory utilization is 86.152 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:20,996 [base.py:1385] : Parallel run at iteration 123 out of 274. Memory utilization is 86.056 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:25,472 [base.py:1385] : Parallel run at iteration 124 out of 274. Memory utilization is 86.034 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:29,949 [base.py:1385] : Parallel run at iteration 125 out of 274. Memory utilization is 86.049 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:34,430 [base.py:1385] : Parallel run at iteration 126 out of 274. Memory utilization is 86.008 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:38,930 [base.py:1385] : Parallel run at iteration 127 out of 274. Memory utilization is 86.038 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:43,463 [base.py:1385] : Parallel run at iteration 128 out of 274. Memory utilization is 85.996 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:48,008 [base.py:1385] : Parallel run at iteration 129 out of 274. Memory utilization is 85.990 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:52,528 [base.py:1385] : Parallel run at iteration 130 out of 274. Memory utilization is 85.985 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:11:57,068 [base.py:1385] : Parallel run at iteration 131 out of 274. Memory utilization is 85.976 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:01,616 [base.py:1385] : Parallel run at iteration 132 out of 274. Memory utilization is 86.024 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:06,268 [base.py:1385] : Parallel run at iteration 133 out of 274. Memory utilization is 86.026 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:10,841 [base.py:1385] : Parallel run at iteration 134 out of 274. Memory utilization is 86.012 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:15,422 [base.py:1385] : Parallel run at iteration 135 out of 274. Memory utilization is 86.014 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:20,036 [base.py:1385] : Parallel run at iteration 136 out of 274. Memory utilization is 86.026 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:24,608 [base.py:1385] : Parallel run at iteration 137 out of 274. Memory utilization is 86.069 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:29,201 [base.py:1385] : Parallel run at iteration 138 out of 274. Memory utilization is 86.101 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:33,787 [base.py:1385] : Parallel run at iteration 139 out of 274. Memory utilization is 86.037 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:38,392 [base.py:1385] : Parallel run at iteration 140 out of 274. Memory utilization is 86.006 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:43,020 [base.py:1385] : Parallel run at iteration 141 out of 274. Memory utilization is 86.020 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:47,618 [base.py:1385] : Parallel run at iteration 142 out of 274. Memory utilization is 86.039 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:52,259 [base.py:1385] : Parallel run at iteration 143 out of 274. Memory utilization is 86.024 GB out of 99.083 GB total (86.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:12:56,896 [base.py:1385] : Parallel run at iteration 144 out of 274. Memory utilization is 86.056 GB out of 99.083 GB total (86.9% used, intended limit of 40.0%)
+DEBUG - 2026-02-11 20:12:58,522 [base.py:1338] : Starting process pool for points control iteration 4 out of 6
+INFO - 2026-02-11 20:15:00,826 [base.py:1385] : Parallel run at iteration 145 out of 274. Memory utilization is 89.360 GB out of 99.083 GB total (90.2% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:05,657 [base.py:1385] : Parallel run at iteration 146 out of 274. Memory utilization is 89.289 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:10,474 [base.py:1385] : Parallel run at iteration 147 out of 274. Memory utilization is 89.205 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:15,283 [base.py:1385] : Parallel run at iteration 148 out of 274. Memory utilization is 89.133 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:20,116 [base.py:1385] : Parallel run at iteration 149 out of 274. Memory utilization is 89.015 GB out of 99.083 GB total (89.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:24,831 [base.py:1385] : Parallel run at iteration 150 out of 274. Memory utilization is 89.057 GB out of 99.083 GB total (89.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:29,501 [base.py:1385] : Parallel run at iteration 151 out of 274. Memory utilization is 89.164 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:34,296 [base.py:1385] : Parallel run at iteration 152 out of 274. Memory utilization is 89.357 GB out of 99.083 GB total (90.2% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:39,206 [base.py:1385] : Parallel run at iteration 153 out of 274. Memory utilization is 89.499 GB out of 99.083 GB total (90.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:43,901 [base.py:1385] : Parallel run at iteration 154 out of 274. Memory utilization is 89.365 GB out of 99.083 GB total (90.2% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:48,671 [base.py:1385] : Parallel run at iteration 155 out of 274. Memory utilization is 89.347 GB out of 99.083 GB total (90.2% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:53,355 [base.py:1385] : Parallel run at iteration 156 out of 274. Memory utilization is 89.306 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:15:58,045 [base.py:1385] : Parallel run at iteration 157 out of 274. Memory utilization is 89.295 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:02,777 [base.py:1385] : Parallel run at iteration 158 out of 274. Memory utilization is 89.241 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:07,500 [base.py:1385] : Parallel run at iteration 159 out of 274. Memory utilization is 89.300 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:12,221 [base.py:1385] : Parallel run at iteration 160 out of 274. Memory utilization is 89.272 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:16,950 [base.py:1385] : Parallel run at iteration 161 out of 274. Memory utilization is 89.251 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:21,710 [base.py:1385] : Parallel run at iteration 162 out of 274. Memory utilization is 89.209 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:26,464 [base.py:1385] : Parallel run at iteration 163 out of 274. Memory utilization is 89.245 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:31,241 [base.py:1385] : Parallel run at iteration 164 out of 274. Memory utilization is 89.217 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:36,048 [base.py:1385] : Parallel run at iteration 165 out of 274. Memory utilization is 89.194 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:40,838 [base.py:1385] : Parallel run at iteration 166 out of 274. Memory utilization is 89.216 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:45,625 [base.py:1385] : Parallel run at iteration 167 out of 274. Memory utilization is 89.213 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:50,423 [base.py:1385] : Parallel run at iteration 168 out of 274. Memory utilization is 89.204 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:16:55,211 [base.py:1385] : Parallel run at iteration 169 out of 274. Memory utilization is 89.206 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:00,005 [base.py:1385] : Parallel run at iteration 170 out of 274. Memory utilization is 89.190 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:04,901 [base.py:1385] : Parallel run at iteration 171 out of 274. Memory utilization is 89.213 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:09,747 [base.py:1385] : Parallel run at iteration 172 out of 274. Memory utilization is 89.205 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:14,582 [base.py:1385] : Parallel run at iteration 173 out of 274. Memory utilization is 89.199 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:19,411 [base.py:1385] : Parallel run at iteration 174 out of 274. Memory utilization is 89.246 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:24,267 [base.py:1385] : Parallel run at iteration 175 out of 274. Memory utilization is 89.263 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:29,152 [base.py:1385] : Parallel run at iteration 176 out of 274. Memory utilization is 89.295 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:34,022 [base.py:1385] : Parallel run at iteration 177 out of 274. Memory utilization is 89.235 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:38,896 [base.py:1385] : Parallel run at iteration 178 out of 274. Memory utilization is 89.204 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:43,786 [base.py:1385] : Parallel run at iteration 179 out of 274. Memory utilization is 89.213 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:48,665 [base.py:1385] : Parallel run at iteration 180 out of 274. Memory utilization is 89.232 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:53,603 [base.py:1385] : Parallel run at iteration 181 out of 274. Memory utilization is 89.184 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:17:58,519 [base.py:1385] : Parallel run at iteration 182 out of 274. Memory utilization is 89.232 GB out of 99.083 GB total (90.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:03,424 [base.py:1385] : Parallel run at iteration 183 out of 274. Memory utilization is 89.203 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:08,336 [base.py:1385] : Parallel run at iteration 184 out of 274. Memory utilization is 89.188 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:13,231 [base.py:1385] : Parallel run at iteration 185 out of 274. Memory utilization is 89.199 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:18,159 [base.py:1385] : Parallel run at iteration 186 out of 274. Memory utilization is 89.178 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:23,074 [base.py:1385] : Parallel run at iteration 187 out of 274. Memory utilization is 89.212 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:28,013 [base.py:1385] : Parallel run at iteration 188 out of 274. Memory utilization is 89.203 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:32,977 [base.py:1385] : Parallel run at iteration 189 out of 274. Memory utilization is 89.183 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:37,939 [base.py:1385] : Parallel run at iteration 190 out of 274. Memory utilization is 89.202 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:42,908 [base.py:1385] : Parallel run at iteration 191 out of 274. Memory utilization is 89.202 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:18:47,878 [base.py:1385] : Parallel run at iteration 192 out of 274. Memory utilization is 89.197 GB out of 99.083 GB total (90.0% used, intended limit of 40.0%)
+DEBUG - 2026-02-11 20:18:49,525 [base.py:1338] : Starting process pool for points control iteration 5 out of 6
+INFO - 2026-02-11 20:20:50,913 [base.py:1385] : Parallel run at iteration 193 out of 274. Memory utilization is 93.251 GB out of 99.083 GB total (94.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:20:56,294 [base.py:1385] : Parallel run at iteration 194 out of 274. Memory utilization is 93.230 GB out of 99.083 GB total (94.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:01,737 [base.py:1385] : Parallel run at iteration 195 out of 274. Memory utilization is 93.307 GB out of 99.083 GB total (94.2% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:07,444 [base.py:1385] : Parallel run at iteration 196 out of 274. Memory utilization is 92.641 GB out of 99.083 GB total (93.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:12,513 [base.py:1385] : Parallel run at iteration 197 out of 274. Memory utilization is 92.699 GB out of 99.083 GB total (93.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:17,546 [base.py:1385] : Parallel run at iteration 198 out of 274. Memory utilization is 92.814 GB out of 99.083 GB total (93.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:22,612 [base.py:1385] : Parallel run at iteration 199 out of 274. Memory utilization is 92.919 GB out of 99.083 GB total (93.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:27,885 [base.py:1385] : Parallel run at iteration 200 out of 274. Memory utilization is 93.059 GB out of 99.083 GB total (93.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:33,055 [base.py:1385] : Parallel run at iteration 201 out of 274. Memory utilization is 92.990 GB out of 99.083 GB total (93.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:38,127 [base.py:1385] : Parallel run at iteration 202 out of 274. Memory utilization is 92.968 GB out of 99.083 GB total (93.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:43,220 [base.py:1385] : Parallel run at iteration 203 out of 274. Memory utilization is 92.929 GB out of 99.083 GB total (93.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:48,343 [base.py:1385] : Parallel run at iteration 204 out of 274. Memory utilization is 92.904 GB out of 99.083 GB total (93.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:53,473 [base.py:1385] : Parallel run at iteration 205 out of 274. Memory utilization is 92.910 GB out of 99.083 GB total (93.8% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:21:58,600 [base.py:1385] : Parallel run at iteration 206 out of 274. Memory utilization is 92.882 GB out of 99.083 GB total (93.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:03,743 [base.py:1385] : Parallel run at iteration 207 out of 274. Memory utilization is 92.820 GB out of 99.083 GB total (93.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:08,893 [base.py:1385] : Parallel run at iteration 208 out of 274. Memory utilization is 92.775 GB out of 99.083 GB total (93.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:14,069 [base.py:1385] : Parallel run at iteration 209 out of 274. Memory utilization is 92.831 GB out of 99.083 GB total (93.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:19,205 [base.py:1385] : Parallel run at iteration 210 out of 274. Memory utilization is 92.840 GB out of 99.083 GB total (93.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:24,349 [base.py:1385] : Parallel run at iteration 211 out of 274. Memory utilization is 92.777 GB out of 99.083 GB total (93.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:29,465 [base.py:1385] : Parallel run at iteration 212 out of 274. Memory utilization is 92.753 GB out of 99.083 GB total (93.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:34,626 [base.py:1385] : Parallel run at iteration 213 out of 274. Memory utilization is 92.737 GB out of 99.083 GB total (93.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:39,835 [base.py:1385] : Parallel run at iteration 214 out of 274. Memory utilization is 92.609 GB out of 99.083 GB total (93.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:44,996 [base.py:1385] : Parallel run at iteration 215 out of 274. Memory utilization is 92.594 GB out of 99.083 GB total (93.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:50,203 [base.py:1385] : Parallel run at iteration 216 out of 274. Memory utilization is 92.522 GB out of 99.083 GB total (93.4% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:22:55,448 [base.py:1385] : Parallel run at iteration 217 out of 274. Memory utilization is 92.562 GB out of 99.083 GB total (93.4% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:00,689 [base.py:1385] : Parallel run at iteration 218 out of 274. Memory utilization is 92.463 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:05,900 [base.py:1385] : Parallel run at iteration 219 out of 274. Memory utilization is 92.550 GB out of 99.083 GB total (93.4% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:11,143 [base.py:1385] : Parallel run at iteration 220 out of 274. Memory utilization is 92.516 GB out of 99.083 GB total (93.4% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:16,410 [base.py:1385] : Parallel run at iteration 221 out of 274. Memory utilization is 92.511 GB out of 99.083 GB total (93.4% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:21,672 [base.py:1385] : Parallel run at iteration 222 out of 274. Memory utilization is 92.440 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:26,980 [base.py:1385] : Parallel run at iteration 223 out of 274. Memory utilization is 92.438 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:32,279 [base.py:1385] : Parallel run at iteration 224 out of 274. Memory utilization is 92.410 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:37,526 [base.py:1385] : Parallel run at iteration 225 out of 274. Memory utilization is 92.473 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:42,793 [base.py:1385] : Parallel run at iteration 226 out of 274. Memory utilization is 92.410 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:48,079 [base.py:1385] : Parallel run at iteration 227 out of 274. Memory utilization is 92.439 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:53,373 [base.py:1385] : Parallel run at iteration 228 out of 274. Memory utilization is 92.453 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:23:58,696 [base.py:1385] : Parallel run at iteration 229 out of 274. Memory utilization is 92.491 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:04,039 [base.py:1385] : Parallel run at iteration 230 out of 274. Memory utilization is 92.428 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:09,385 [base.py:1385] : Parallel run at iteration 231 out of 274. Memory utilization is 92.441 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:14,719 [base.py:1385] : Parallel run at iteration 232 out of 274. Memory utilization is 92.462 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:19,996 [base.py:1385] : Parallel run at iteration 233 out of 274. Memory utilization is 92.469 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:25,325 [base.py:1385] : Parallel run at iteration 234 out of 274. Memory utilization is 92.430 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:30,742 [base.py:1385] : Parallel run at iteration 235 out of 274. Memory utilization is 92.407 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:36,111 [base.py:1385] : Parallel run at iteration 236 out of 274. Memory utilization is 92.456 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:41,514 [base.py:1385] : Parallel run at iteration 237 out of 274. Memory utilization is 92.397 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:46,898 [base.py:1385] : Parallel run at iteration 238 out of 274. Memory utilization is 92.410 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:52,300 [base.py:1385] : Parallel run at iteration 239 out of 274. Memory utilization is 92.464 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:24:57,746 [base.py:1385] : Parallel run at iteration 240 out of 274. Memory utilization is 92.429 GB out of 99.083 GB total (93.3% used, intended limit of 40.0%)
+DEBUG - 2026-02-11 20:24:59,391 [base.py:1338] : Starting process pool for points control iteration 6 out of 6
+INFO - 2026-02-11 20:26:26,037 [base.py:1385] : Parallel run at iteration 241 out of 274. Memory utilization is 83.770 GB out of 99.083 GB total (84.5% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:26:32,021 [base.py:1385] : Parallel run at iteration 242 out of 274. Memory utilization is 84.151 GB out of 99.083 GB total (84.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:26:37,960 [base.py:1385] : Parallel run at iteration 243 out of 274. Memory utilization is 83.838 GB out of 99.083 GB total (84.6% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:26:44,349 [base.py:1385] : Parallel run at iteration 244 out of 274. Memory utilization is 82.941 GB out of 99.083 GB total (83.7% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:26:50,058 [base.py:1385] : Parallel run at iteration 245 out of 274. Memory utilization is 82.536 GB out of 99.083 GB total (83.3% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:26:55,727 [base.py:1385] : Parallel run at iteration 246 out of 274. Memory utilization is 82.378 GB out of 99.083 GB total (83.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:01,357 [base.py:1385] : Parallel run at iteration 247 out of 274. Memory utilization is 82.329 GB out of 99.083 GB total (83.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:07,016 [base.py:1385] : Parallel run at iteration 248 out of 274. Memory utilization is 82.322 GB out of 99.083 GB total (83.1% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:12,654 [base.py:1385] : Parallel run at iteration 249 out of 274. Memory utilization is 82.267 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:18,333 [base.py:1385] : Parallel run at iteration 250 out of 274. Memory utilization is 82.238 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:23,941 [base.py:1385] : Parallel run at iteration 251 out of 274. Memory utilization is 82.240 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:29,615 [base.py:1385] : Parallel run at iteration 252 out of 274. Memory utilization is 82.171 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:35,287 [base.py:1385] : Parallel run at iteration 253 out of 274. Memory utilization is 82.217 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:41,005 [base.py:1385] : Parallel run at iteration 254 out of 274. Memory utilization is 82.143 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:46,683 [base.py:1385] : Parallel run at iteration 255 out of 274. Memory utilization is 82.207 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:52,424 [base.py:1385] : Parallel run at iteration 256 out of 274. Memory utilization is 82.197 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:27:58,121 [base.py:1385] : Parallel run at iteration 257 out of 274. Memory utilization is 82.139 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:03,882 [base.py:1385] : Parallel run at iteration 258 out of 274. Memory utilization is 82.134 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:09,610 [base.py:1385] : Parallel run at iteration 259 out of 274. Memory utilization is 82.196 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:15,357 [base.py:1385] : Parallel run at iteration 260 out of 274. Memory utilization is 82.147 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:21,079 [base.py:1385] : Parallel run at iteration 261 out of 274. Memory utilization is 82.108 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:26,818 [base.py:1385] : Parallel run at iteration 262 out of 274. Memory utilization is 82.123 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:32,551 [base.py:1385] : Parallel run at iteration 263 out of 274. Memory utilization is 82.232 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:38,346 [base.py:1385] : Parallel run at iteration 264 out of 274. Memory utilization is 82.177 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:44,123 [base.py:1385] : Parallel run at iteration 265 out of 274. Memory utilization is 82.149 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:49,936 [base.py:1385] : Parallel run at iteration 266 out of 274. Memory utilization is 82.212 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:28:55,780 [base.py:1385] : Parallel run at iteration 267 out of 274. Memory utilization is 82.150 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:01,609 [base.py:1385] : Parallel run at iteration 268 out of 274. Memory utilization is 82.136 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:07,431 [base.py:1385] : Parallel run at iteration 269 out of 274. Memory utilization is 82.211 GB out of 99.083 GB total (83.0% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:13,282 [base.py:1385] : Parallel run at iteration 270 out of 274. Memory utilization is 82.176 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:19,075 [base.py:1385] : Parallel run at iteration 271 out of 274. Memory utilization is 82.178 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:24,948 [base.py:1385] : Parallel run at iteration 272 out of 274. Memory utilization is 82.135 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:30,758 [base.py:1385] : Parallel run at iteration 273 out of 274. Memory utilization is 82.100 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:33,505 [base.py:1385] : Parallel run at iteration 274 out of 274. Memory utilization is 82.139 GB out of 99.083 GB total (82.9% used, intended limit of 40.0%)
+INFO - 2026-02-11 20:29:34,676 [base.py:1222] : Flushing outputs to disk, target file: "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation_2018.h5"
+DEBUG - 2026-02-11 20:31:09,484 [base.py:1242] : Flushed output successfully to disk.
+INFO - 2026-02-11 20:31:09,513 [status.py:836] : Pipeline step 'generation' complete. Time elapsed: 0:36:43. Target output file: '/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation_2018.h5'

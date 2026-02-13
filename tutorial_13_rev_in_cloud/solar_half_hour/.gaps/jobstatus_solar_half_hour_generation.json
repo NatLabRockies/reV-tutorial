@@ -1,0 +1,49 @@
+{
+    "generation": {
+        "solar_half_hour_generation": {
+            "bias_correct": null,
+            "curtailment": null,
+            "drop_leap": false,
+            "gid_map": null,
+            "job_status": "successful",
+            "low_res_resource_file": null,
+            "max_workers": 46,
+            "memory_utilization_limit": 0.4,
+            "out_file": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation_2018.h5",
+            "out_fpath": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/solar_half_hour_generation",
+            "output_request": [
+                "cf_profile",
+                "cf_profile_ac",
+                "cf_mean",
+                "cf_mean_ac",
+                "ghi_mean",
+                "lcoe_fcr",
+                "ac",
+                "dc",
+                "clipped_power",
+                "capital_cost",
+                "fixed_operating_cost",
+                "system_capacity",
+                "system_capacity_ac",
+                "fixed_charge_rate",
+                "variable_operating_cost",
+                "dc_ac_ratio"
+            ],
+            "pool_size": null,
+            "resource_file": "/nrel/nsrdb/GOES/aggregated/v4.0.0/nsrdb_2018.h5",
+            "runtime_seconds": 2203.161867,
+            "sam_files": {
+                "default": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/pvwattsv8.json5"
+            },
+            "scale_outputs": true,
+            "site_data": null,
+            "sites_per_worker": 200,
+            "technology": "pvwattsv8",
+            "time_end": "11-Feb-2026 20:31:09",
+            "time_start": "11-Feb-2026 19:54:26",
+            "timeout": 1800,
+            "total_runtime": "0:36:43",
+            "write_mapped_gids": false
+        }
+    }
+}

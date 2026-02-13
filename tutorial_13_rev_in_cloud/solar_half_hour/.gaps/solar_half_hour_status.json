@@ -1,0 +1,26 @@
+{
+    "generation": {
+        "pipeline_index": 0,
+        "solar_half_hour_generation": {
+            "job_id": "447",
+            "hardware": "awspc",
+            "qos": "normal",
+            "job_status": "submitted",
+            "time_submitted": "11-Feb-2026 19:53:42",
+            "stdout_log": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs/stdout/solar_half_hour_generation_447.o",
+            "stdout_err_log": "/scratch/reV-tutorial/tutorial_13_rev_in_cloud/solar_half_hour/logs/stdout/solar_half_hour_generation_447.e"
+        }
+    },
+    "collect": {
+        "pipeline_index": 1
+    },
+    "multi-year": {
+        "pipeline_index": 2
+    },
+    "supply-curve-aggregation": {
+        "pipeline_index": 3
+    },
+    "rep-profiles": {
+        "pipeline_index": 4
+    }
+}
