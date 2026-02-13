@@ -251,7 +251,7 @@ arev
     hs_bucket = nrel-pds-hsds
     ```
 
-2. Clone or move this tutorial repository into the shared directory we established in the AWS Parallel Cluster configuration YAML in [section 4](#4b-the-parallel-cluster-configuration-file) (`/scratch/` by default). We want it in the shared directory because this is where we're going to run reV and write the outputs here.
+2. Clone or move this tutorial repository into the shared directory we established in the AWS Parallel Cluster configuration YAML in [section 4](#4b-the-parallel-cluster-configuration-file) (`/scratch/` by default). We want it in the shared directory because this is where we're going to run reV and write the outputs.
 
 3. In this directory you'll find several "start_hsds" bash scripts. If you wish to run reV with the Slurm `exclusive` parameter, use `start_hsds.sh`. If you want to use node sharing, you will need to use `start_hsds_node_sharing.sh`, which locks the file so that only one process attempts to install docker and run HSDS while the others wait for the service to start. This is needed in this case because reV will run this script once for each process it kicks off; if node sharing is turned off each process is run on a dedicated node, but if it is left on many reV jobs will be kicked off and each will run the file on the same server.
     > Note: The contents of your `start_hsds.sh` script for installing and starting Docker depend on which OS you’re using since it uses the package manager to do it. Different OSes use different package managers. The sample file included in this repository uses the Advanced Package Tool (APT), which is common to all Debian-based operating systems such as Ubuntu. If you aren't using a Debian-based OS, you'll need to edit the file.
