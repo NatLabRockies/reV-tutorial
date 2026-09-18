@@ -82,7 +82,7 @@ You can also clone the repository and install directly from there. Here is an ex
 python3 -m venv ~/envs/rev
 source ~/envs/rev/bin/activate
 mkdir ~/gitrepos && cd ~/gitrepos
-git clone https://github.com/NLR/reV.git
+git clone https://github.com/NatLabRockies/reV.git
 cd reV
 python3 -m pip install .
 ```
