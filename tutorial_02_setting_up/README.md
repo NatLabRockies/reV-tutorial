@@ -1,6 +1,6 @@
 # Getting Started - Installing reV
 
-Installation instructions are outlined in the reV repository ([reV](https://github.com/NREL/reV)), but we'll review them here to add more detail and a few more tips. The simplest way to install reV and its two main dependencies ([PySAM](https://github.com/NREL/pysam) and [rex](https://github.com/NREL/rex)) is to create a virtual environment and install reV with pip. This requires a Python 3 installation, which uses a different process for each operating system. Additionally, reV may not be compatible with the latest version of Python, so if you have a newer version of Python you may need to install a separate, older version along side it. In case you need help with that, there are many online guides. You may use the official [Python beginners guide](https://wiki.python.org/moin/BeginnersGuide/Download), but it is being archived for a lack of use and may be out of date by the time you read this. So, instead, we are suggesting an excellent alternative from the Real Python website, which provides detailed OS-dependent installation instructions: [https://realpython.com/installing-python/](https://realpython.com/installing-python/).
+Installation instructions are outlined in the reV repository ([reV](https://github.com/NatLabRockies/reV)), but we'll review them here to add more detail and a few more tips. The simplest way to install reV and its two main dependencies ([PySAM](https://github.com/NatLabRockies/pysam) and [rex](https://github.com/NatLabRockies/rex)) is to create a virtual environment and install reV with pip. This requires a Python 3 installation, which uses a different process for each operating system. Additionally, reV may not be compatible with the latest version of Python, so if you have a newer version of Python you may need to install a separate, older version along side it. In case you need help with that, there are many online guides. You may use the official [Python beginners guide](https://wiki.python.org/moin/BeginnersGuide/Download), but it is being archived for a lack of use and may be out of date by the time you read this. So, instead, we are suggesting an excellent alternative from the Real Python website, which provides detailed OS-dependent installation instructions: [https://realpython.com/installing-python/](https://realpython.com/installing-python/).
 
 ## Check Python Version
 Make sure that the Python version you are using is compatible with reV. To do this, call the command below and check it against the supported Python versions found on the reV GitHub repository page.
@@ -14,7 +14,7 @@ Unix:
 mkdir ~/envs
 python3 -m venv ~/envs/rev
 source ~/envs/rev/bin/activate
-pip install NREL-reV
+pip install NLR-reV
 ```
 
 Windows:
@@ -22,12 +22,12 @@ Windows:
 mkdir ~/envs
 python3 -m venv ~/envs/rev
 .\envs\rev\Scripts\activate.bat
-pip install NREL-reV
+pip install NLR-reV
 ```
 
-If you plan on retrieving resource data remotely from NREL servers, you need to install reV with HSDS support. Just add the `[hsds]` option to the pip installation command as follows:
+If you plan on retrieving resource data remotely from NLR servers, you need to install reV with HSDS support. Just add the `[hsds]` option to the pip installation command as follows:
 ```bash
-pip install NREL-reV[hsds]
+pip install NLR-reV[hsds]
 ```
 
 
@@ -82,7 +82,7 @@ You can also clone the repository and install directly from there. Here is an ex
 python3 -m venv ~/envs/rev
 source ~/envs/rev/bin/activate
 mkdir ~/gitrepos && cd ~/gitrepos
-git clone https://github.com/NREL/reV.git
+git clone https://github.com/NLR/reV.git
 cd reV
 python3 -m pip install .
 ```
@@ -109,4 +109,4 @@ pytest -n auto .
 ```
 
 ## All done?
-Move on to [`Tutorial 3: Building Inputs (tutorial_3_input_builds)`](https://github.com/NREL/reV-tutorial/tree/master/tutorial_03_input_builds).
+Move on to [`Tutorial 3: Building Inputs (tutorial_3_input_builds)`](https://github.com/NLR/reV-tutorial/tree/master/tutorial_03_input_builds).
