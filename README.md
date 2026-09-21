@@ -1,5 +1,5 @@
 # reV-tutorial
-A tutorial for the Renewable Energy Potential Model ([reV](https://github.com/NREL/reV)).
+A tutorial for the Renewable Energy Potential Model ([reV](https://github.com/natlabrockies/reV)).
 
 This is a repository for learning to run reV, both through Commands-Line Interface (CLIs) and via the Python modules. It contains the sample input data found in the reV repository and sample run directories set up to create outputs for a study area in Rhode Island. Detailed instructions, example runs, and tests can be found in the official reV repository. This repository will supplement that material with a set of python scripts and preconfigured run folders specifically tailored for learning the basics of retrieving/generating the input datasets, configuring the settings, running the model, and troubleshooting common problems. The sample runs will point to the inputs automatically with the hope that it will help the user better understand the required formats needed for building custom inputs. This repo will also include a FAQ page that will be added to as questions arise along with a common gotcha page for common mistakes.
 
@@ -12,12 +12,12 @@ reV is split into four main components:
 4) Reaggregating generation profiles (timeseries) into representative profiles for each model generation plant.
 
 <p align="center">
-  <img src="https://github.com/NREL/reV-tutorial/blob/master/tutorial_05_pipeline/images/rev_standard_pipeline.png" alt="" height=400>
+  <img src="https://github.com/natlabrockies/reV-tutorial/blob/master/tutorial_05_pipeline/images/rev_standard_pipeline.png" alt="" height=400>
   <p align="center"> <i>reV is modular, outputs from one module serve as inputs to the next. Depending on the outputs needed, part or all of the reV pipeline can be used.</i></p>
 </p>
 
 
-At its foundation reV serves a spatial coordinator for the [Systems Advisor Model](https://sam.nrel.gov/). It runs any number of simulated generators at any number of points for which resource data is availabe. The resource datasets most typically used with reV (at least thus far) include the [National Solar Radiation Database](https://nsrdb.nrel.gov/) (NSRDB) and the [Wind Integration National Dataset Toolkit](https://www.nrel.gov/grid/wind-toolkit.html) (WTK), however any resource dataset can be used if it is formatted correctly.
+At its foundation reV serves a spatial coordinator for the [Systems Advisor Model](https://sam.nlr.gov/). It runs any number of simulated generators at any number of points for which resource data is availabe. The resource datasets most typically used with reV (at least thus far) include the [National Solar Radiation Database](https://nsrdb.nlr.gov/) (NSRDB) and the [Wind Integration National Dataset Toolkit](https://www.nlr.gov/grid/wind-toolkit.html) (WTK), however any resource dataset can be used if it is formatted correctly.
 
 reV is designed as a set of Python modules, each of which take as inputs the outputs of previous modules. The basic work flow is to take input "resource" datasets, a specifically formatted gridded timeseries of wind or solar irradiance, pass them through module generators (**in reV-Generation**) (wind turbines or photovoltaic panels) to create gridded timeseries of energy outputs and production costs, pass that into an aggregation module (**reV-Supply-Curve-Aggregation**) which combines the resource scale generation values into model plants with plant-level costs and energy production, and finally pass that into a transmission module (**reV-Supply-Curve**) which connects these plants to transmission and updates costs: 
 
@@ -37,7 +37,7 @@ The quickest and easiest way to get started with reV is to use the **JSON-CLI** 
 To learn about how to work with the reV JSON-CLI workflow, go into each `tutorial_#_module` folder sequentially and follow the instruction in each. 
 
 # reV Documentation
-Use this documentation in tandem with the tutorial series: https://nrel.github.io/reV/_cli/cli.html.
+Use this documentation in tandem with the tutorial series: [https://nrel.github.io/reV/_cli/cli.html](https://natlabrockies.github.io/reV/_cli/cli.html).
 
 # Getting started with the tutorial
 Tutorial #1 (`tutorial_1_concepts`) will introduce key concepts (particularly that of "technical potential") needed to understand what the outputs of the reV model represent. It is recommended to start here, but if you understand all that and wish to get on with running the model, you may skip this one. Each subsequent tutorial folder contains reV configuration files and a README describing how to use them to run reV and generate outputs. The READMEs will also describe what each configuration parameter means. These tutorials are ordered by increasing complexity. Early tutorials should be setup such that you may simply run the model without editing configuration files, though later tutorials will require user input in order to work.
