@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reV-tutorial"
+version = '1.0.0'
+description = "Support package for the reV-tutorial."
+readme = "README.md"
+authors = [
+    {name = "Travis Williams", email = "travis.williams@nlr.gov"},
+    {name = "Sophie-Min Thomson"},
+    {name = "Haoyu Wang"}
+]
+requires-python = ">3.12"
+classifiers=[
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: English",
+  "Programming Language :: Python"
+]
+
+[tool.setuptools.packages]
+find = { include = ["rev_tutorial*"] }
