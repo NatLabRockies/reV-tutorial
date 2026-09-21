@@ -16,15 +16,15 @@ We need a way to communicate SAM parameters to reV. This is done via JSON config
 
 SAM is a *very* extensive and detailed model. It can model many different technologies and, within each, there are countless parameters that can be set. A thorough understanding of SAM (and how to specify a SAM configuration file to a particular energy generator) requires significant study and practice with the model. This tutorial will not attempt to replace existing SAM tutorials. Instead, its goal is simply to demonstrate how to create a configuration file that will integrate with reV. For more resources for learning about SAM and how to use it, please visit:
 
-  - The SAM website: https://sam.nlr.gov/
+  - The SAM website: `https://sam.nlr.gov` (*Copy & paste required due to firewall*)
+  - The SAM  user forum: `https://sam.nlr.gov/forum.html`
   - The SAM YouTube Page: https://www.youtube.com/channel/UC_Z7m8z5tOclfNgaTfGDdPQ
-  - The SAM  user forum: https://sam.nlr.gov/forum.html
 
 ## Building a configuration file
 Building a SAM configuration file can be done in several ways, here's a few:
 
   1) Use the SAM GUI to build a system and then export the parameters to a JSON file (that reV can then use). This is probably the easiest, most foolproof method, and is what is recommended by PySAM for building its own model inputs.
-      - Download the SAM GUI: https://sam.nlr.gov/download.html.
+      - Download the SAM GUI: `https://sam.nlr.gov/download.html`.
       - Open SAM, start a new project, choose your "performance model", then choose the specific SAM module, then choose your financial model.
       - Enter your system design parameters for all entries that you don't want to use the defaults for.
       - Once you're done, go to the title tab for the project (defaults to "untitled"), click the dropdown icon ("⌄"), click "generate code", and select "JSON for inputs". Click "OK", download the file, then        edit the file to remove the resource file entry since that will be handled in reV.
@@ -43,14 +43,14 @@ The following is a configuration example with a minimum set of parameters for a 
 
 <pre>
 {
-    <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesignarray_type" style="border-bottom: 0px">"array_type"</a>: 2,
+    <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.array_type" style="border-bottom: 0px">"array_type"</a>: 2,
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.azimuth">"azimuth"</a>: 180,
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Lcoefcr.html#PySAM.Lcoefcr.Lcoefcr.SimpleLCOE.capital_cost">"capital_cost"</a>: 39767200,
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.dc_ac_ratio">"dc_ac_ratio"</a>: 1.3, 
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Lcoefcr.html#PySAM.Lcoefcr.Lcoefcr.SimpleLCOE.fixed_charge_rate">"fixed_charge_rate"</a>: 0.096, 
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Lcoefcr.html#PySAM.Lcoefcr.Lcoefcr.SimpleLCOE.fixed_operating_cost">"fixed_operating_cost"</a>: 260000, 
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.losses">"losses"</a>: 14.07566, 
-    <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv5.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.module_type">"module_type"</a>: 0, 
+    <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.module_type">"module_type"</a>: 0, 
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.system_capacity">"system_capacity"</a>: 20000, 
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html#PySAM.Pvwattsv8.Pvwattsv8.SystemDesign.tilt">"tilt"</a>: 0,
     <a href="https://nlr-pysam.readthedocs.io/en/latest/modules/Lcoefcr.html#PySAM.Lcoefcr.Lcoefcr.SimpleLCOE.variable_operating_cost">"variable_operating_cost"</a>: 0 
@@ -84,6 +84,6 @@ Three commonly used SAM modules in reV can be found here:
 
 - Solar (simple): [https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html](https://nlr-pysam.readthedocs.io/en/latest/modules/Pvwattsv8.html)
 
-- Solar (detailed): [https://nlr-pysam.readthedocs.io/en/main/modules/Pvsamv1.html](https://nlr-pysam.readthedocs.io/en/main/modules/Pvsamv1.html)
+- Solar (detailed): [https://nlr-pysam.readthedocs.io/en/main/modules/Pvsamv1.html](https://nlr-pysam.readthedocs.io/en/latest/modules/Pvsamv1.html)
 
 - Wind: [https://nlr-pysam.readthedocs.io/en/latest/modules/Windpower.html](https://nlr-pysam.readthedocs.io/en/latest/modules/Windpower.html)
