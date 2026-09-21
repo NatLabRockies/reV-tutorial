@@ -42,7 +42,15 @@ Later, in the generation module in the next tutorial, you will see that we may a
 ...
 ```
 
+You may then filter this dataframe down to just the target sites (here we are only running these in locations below a certain elevation) and needed fields. Though you only need `gid` and `config`, it can be useful to include at least the coordinates.
 
+```python
+meta = meta[meta["elevation"] < 150]
+project_points = meta[["latitude", "longitude", "gid", "config"]]
+```
 
-These points are then used as example inputs to the tutorial_4 and tutorial_5. 
+Then save these files to a CSV. The path to this CSV will be used later in the same generation config mentioned above.
 
+```python
+project_points.to_csv("path/to/project_points.csv", index=False)
+```
