@@ -1,8 +1,8 @@
 Resource Files
 ===
-The resource files used by reV contain the same information as those used by SAM but contain multiple locations (represented in a grid), have a fundamentally different structure, and are much larger in size. This format is nicely integrated into the NREL modeling ecosystem but is unique to NREL. So, it typically requires some explanation and, for new users or people with experience in more standardized atmospheric data formats like NetCDFs, it may take some time to get used to. Notably, the output generation files that reV produces will mirror the structure of this format.
+The resource files used by reV contain the same information as those used by SAM but contain multiple locations (represented in a grid), have a fundamentally different structure, and are much larger in size. This format is nicely integrated into the NLR modeling ecosystem but is unique to NLR. So, it typically requires some explanation and, for new users or people with experience in more standardized atmospheric data formats like NetCDFs, it may take some time to get used to. Notably, the output generation files that reV produces will mirror the structure of this format.
 
-The inputs required for a reV-compatible resource file will depend on the SAM module used in the generation step. You can find more information about the sets of required variables in SAM's help page here https://samrepo.nrelcloud.org/help/weather_format.html. Below, we've recreated SAM's weather variable reference table to include just the reV-comaptible modules. Note that not all elements are always required (e.g., snow losses simply won't be modeled in PV if the depth variable is missing and plane of array irradiance is only required in PVSamv1 if other irradiance data isn't available). More notes on each variable can be found in the original table on the weather data elements page here: https://samrepo.nrelcloud.org/help/weather_data_elements.html.
+The inputs required for a reV-compatible resource file will depend on the SAM module used in the generation step. You can find more information about the sets of required variables in SAM's help page here `https://samrepo.nlr.gov/help/weather_format.html`. Below, we've recreated SAM's weather variable reference table to include just the reV-compatible modules. Note that not all elements are always required (e.g., snow losses simply won't be modeled in PV if the depth variable is missing and plane of array irradiance is only required in PVSamv1 if other irradiance data isn't available). More notes on each variable can be found in the original table on the weather data elements page here: `https://samrepo.nlr.gov/help/weather_data.html`.
 
 
 <table align="center">
@@ -90,7 +90,7 @@ The format is composed of a set of non-grouped HDF5 datasets and attributes. Atm
 - A `scale_factor` attribute on each variable that is used to translate integers back into floats where scaling is used for data storage
 - A `units` attribute that stores the units for each variable
 
-Examples of this format for the `windpower` and `pvwatts` modules may be found here: [https://github.com/NREL/reV-tutorial/tree/master/data/resources](../../data/resources/). 
+Examples of this format for the `windpower` and `pvwatts` modules may be found in the `wtk` and `nsrdb` folders in the reV test data directory here: https://github.com/NatLabRockies/reV/tree/main/tests/data. 
 
 ## Visualizing the format through reV Outputs
 The graphic below shows a representation of NREL's space-time format using a `reV` output. The `reV generation` and `rep-profiles` outputs mirror the resource file's format so any variable in the resource file will match this structure. This graphic shows a reV capacity factor timeseries array, a map of the average capacity factors derived from it, a glimpse at the meta data associated with the X-Axis, and a glimpse at the timeseries vector associated with the Y-Axis.
@@ -104,7 +104,7 @@ If you zoom into the red segment in the array, you can see how this format repre
 <br>
 
 
-![resource_data_diagram_zoomin](https://github.com/NREL/reV-tutorial/blob/master/data/images/resource_data_diagram_zoomin.png)
+![resource_data_diagram_zoomin](https://github.com/natlabrockies/reV-tutorial/blob/master/data/images/resource_data_diagram_zoomin.png)
 
 Existing Resource Files
 ===
