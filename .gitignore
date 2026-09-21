@@ -5,8 +5,6 @@ data/videos/
 **/.DS_Store
 
 # CLI Items
-# Change h5 after dev
-*.h5
 .gaps/
 logs/
 QA_multi-year/
