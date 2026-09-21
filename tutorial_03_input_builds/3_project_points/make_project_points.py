@@ -1,9 +1,4 @@
 """How to build a project points file."""
-import os
-
-import h5py
-import pandas as pd 
-
 from rex import Resource
 
 from rev_tutorial import DATA
@@ -32,7 +27,7 @@ def main():
     # All reV needs is config and gid, but you can include other fields
     project_points = meta[["latitude", "longitude", "gid", "config"]]
 
-    # Save this to a project points file 
+    # Save this to a project points file
     fname = "project_points.csv"
     dst = HOME.joinpath(f"tutorial_3_input_builds/make_project_points/{fname}")
     project_points.to_csv(dst, index=False)
