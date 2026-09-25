@@ -65,7 +65,7 @@ Commands:
 
 ## Activate the reV environment as an alias
 
-For convenience, assuming you're using a bash terminal, you can add an alias to your bash run command script (`~/.bashrc` for Linux or `~/.bash_profile` for MacOS) to call the reV activation command. You can use any text editor (nano, vim, vscode, etc.) and add `alias arev="source ~/envs/rev/bin/activate"` to the bottom somewhere. Here, `arev` stands for "activate rev", but you can call it whatever you want. You can also append the alias setting command to the end of the file directly with the following command:
+For convenience, assuming you're using a bash terminal, you can add an alias to your bash run command script (`~/.bashrc` for Linux or `~/.zshrc` for macOS) to call the reV activation command. You can use any text editor (nano, vim, vscode, etc.) and add `alias arev="source ~/envs/rev/bin/activate"` to the bottom somewhere. Here, `arev` stands for "activate rev", but you can call it whatever you want. You can also append the alias setting command to the end of the file directly with the following command:
 
 ```bash
 echo -e '\n# Activate the reV environment\nalias arev="source ~/envs/rev/bin/activate"' >> ~/.bashrc
