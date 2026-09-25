@@ -14,7 +14,7 @@ This tutorial introduces how to execute multiple reV steps in one single analysi
     ]
 ```
 
-Then, for the `multi-year` module, instead of set an explicit list of file names for the entry `source_files` in the `config_multi-year.json` file like we did in [tutorial_04_generation_a](../tutorial_04_generation_b/config_multi-year.json), we set this entry to "PIPELINE" so that the input for the `multi-year` module is determined automatically from the status file of the previous pipeline step: 
+Then, for the `multi-year` module, instead of set an explicit list of file names for the entry `source_files` in the `config_multi-year.json` file like we did in [tutorial_04_generation_b](../tutorial_04_generation_b/config_multi-year.json), we set this entry to "PIPELINE" so that the input for the `multi-year` module is determined automatically from the status file of the previous pipeline step: 
 
   ```json
     "groups": {
