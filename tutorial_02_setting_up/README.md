@@ -84,7 +84,10 @@ source ~/envs/rev/bin/activate
 mkdir ~/gitrepos && cd ~/gitrepos
 git clone https://github.com/NatLabRockies/reV.git
 cd reV
-python3 -m pip install .
+```
+
+One of the benefits of installing from source is that it enables to you to run the tests. But, unless you want to to run the tests individually, these will test all model functionality and will fail if we don't install all dependencies. Therefore, let's go ahead and install with HSDS and Bespoke (which will be covered later in tutorial 12: Advanced reV).
+python3 -m pip install .[hsds,bespoke]
 ```
 
 ## Install from source in editable mode
