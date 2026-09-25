@@ -88,14 +88,14 @@ cd reV
 
 One of the benefits of installing from source is that it enables to you to run the tests. But, unless you want to to run the tests individually, these will test all model functionality and will fail if we don't install all dependencies. Therefore, let's go ahead and install with HSDS and Bespoke (which will be covered later in tutorial 12: Advanced reV).
 ```bash
-python3 -m pip install .[hsds,bespoke]
+python -m pip install .[hsds,bespoke]
 ```
 
 ## Install from source in editable mode
 If you prefer an editable mode, which allows modifications to the source code without needing to reinstall the package, you can replace the command above with: 
 
 ```bash
-python3 -m pip install -e .[hsds,bespoke]
+python -m pip install -e .[hsds,bespoke]
 ```
 
 ## Second Check - Testing the installation
@@ -113,4 +113,4 @@ pytest -n auto .
 ```
 
 ## All done?
-Move on to [`Tutorial 3: Building Inputs (tutorial_3_input_builds)`](https://github.com/NLR/reV-tutorial/tree/master/tutorial_03_input_builds).
+Move on to [`Tutorial 3: Building Inputs (tutorial_3_input_builds)`](https://github.com/natlabrockies/reV-tutorial/tree/master/tutorial_03_input_builds).
