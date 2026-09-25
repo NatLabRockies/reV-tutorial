@@ -92,7 +92,7 @@ python3 -m pip install .[hsds,bespoke]
 ```
 
 ## Install from source in editable mode
-If you prefer an editable mode, which allows modifications to the source code without needing to reinstall the package, you can replace `python3 -m pip install .` above with: 
+If you prefer an editable mode, which allows modifications to the source code without needing to reinstall the package, you can replace the command above with: 
 
 ```bash
 python3 -m pip install -e .[hsds,bespoke]
