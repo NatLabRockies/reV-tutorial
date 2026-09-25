@@ -87,6 +87,7 @@ cd reV
 ```
 
 One of the benefits of installing from source is that it enables to you to run the tests. But, unless you want to to run the tests individually, these will test all model functionality and will fail if we don't install all dependencies. Therefore, let's go ahead and install with HSDS and Bespoke (which will be covered later in tutorial 12: Advanced reV).
+```bash
 python3 -m pip install .[hsds,bespoke]
 ```
 
