@@ -1,6 +1,6 @@
 # Getting Started - Installing reV
 
-Installation instructions are outlined in the reV repository ([reV](https://github.com/NatLabRockies/reV)), but we'll review them here to add more detail and a few more tips. The simplest way to install reV and its two main dependencies ([PySAM](https://github.com/NatLabRockies/pysam) and [rex](https://github.com/NatLabRockies/rex)) is to create a virtual environment and install reV with pip. This requires a Python 3 installation, which uses a different process for each operating system. Additionally, reV may not be compatible with the latest version of Python, so if you have a newer version of Python you may need to install a separate, older version along side it. In case you need help with that, there are many online guides. You may use the official [Python beginners guide](https://wiki.python.org/moin/BeginnersGuide/Download), but it is being archived for a lack of use and may be out of date by the time you read this. So, instead, we are suggesting an excellent alternative from the Real Python website, which provides detailed OS-dependent installation instructions: [https://realpython.com/installing-python/](https://realpython.com/installing-python/).
+Installation instructions are outlined in the reV repository ([reV](https://github.com/NatLabRockies/reV)), but we'll review them here to add more detail and a few more tips. The simplest way to install reV and its two main dependencies ([PySAM](https://github.com/NatLabRockies/pysam) and [rex](https://github.com/NatLabRockies/rex)) is to create a virtual environment and install reV with pip. This requires a Python 3 installation, which uses a different process for each operating system. Additionally, reV may not be compatible with the latest version of Python, so if you have a newer version of Python you may need to install a separate, older version along side it. In case you need help with that, there are many online guides. You may use the official [Python beginners guide](https://wiki.python.org/moin/BeginnersGuide/Download), but it is being archived for a lack of use and may be out of date by the time you read this. So, instead, we are including one alternative (out of many) from the Python Academy website, which provides OS-dependent installation instructions: [https://python-academy.org/en/guide/python-installation](https://python-academy.org/en/guide/python-installation).
 
 ## Check Python Version
 Make sure that the Python version you are using is compatible with reV. To do this, call the command below and check it against the supported Python versions found on the reV GitHub repository page.
@@ -105,6 +105,7 @@ cd reV/tests/
 pip install pytest
 pytest .
 ```
+
 This takes quite some time, but it is possible to run these tests in parallel. One way to do this is to use the `pytest-xdist` package, as shown below. Regardless of you run in parallel or serially, some of these tests are large (especially `test_bespoke.py`, so it's best if you have something else to do for a while). Below updates the above routine to run the tests with all available CPU cores.
 ```bash
 cd reV/tests/
