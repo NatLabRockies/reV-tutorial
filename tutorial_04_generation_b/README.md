@@ -1,7 +1,7 @@
 reV multi-year
 ===
 
-After running the `generation` module, we now show an example config that take the generated HDF5 files in the `generation` step, then average the multiple-year outputs into a single HDF5 file. Before running the command, we need to first make some changes to source entries in the config file `config_multi-year.json` to point to the correct locations of HDF5 files generated at the previous `generation` step: 
+After running the `reV-generation` module, we now show an example config that take the generated HDF5 files in the `generation` step, then average the multiple-year outputs into a single HDF5 file. Before running the command, we need to first make some changes to source entries in the config file `config_multi-year.json` to point to the correct locations of HDF5 files generated at the previous `generation` step: 
 
 1) The first option is to specify `source_files` to an explicit list of source files. In our case, we need to include the generated HDF5 files for year 2012 and 2013: 
 
