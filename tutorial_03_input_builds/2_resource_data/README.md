@@ -93,7 +93,7 @@ The format is composed of a set of non-grouped HDF5 datasets and attributes. Atm
 Examples of this format for the `windpower` and `pvwatts` modules may be found in the `wtk` and `nsrdb` folders in the reV test data directory here: https://github.com/NatLabRockies/reV/tree/main/tests/data. 
 
 ## Visualizing the format through reV Outputs
-The graphic below shows a representation of NREL's space-time format using a `reV` output. The `reV generation` and `rep-profiles` outputs mirror the resource file's format so any variable in the resource file will match this structure. This graphic shows a reV capacity factor timeseries array, a map of the average capacity factors derived from it, a glimpse at the meta data associated with the X-Axis, and a glimpse at the timeseries vector associated with the Y-Axis.
+The graphic below shows a representation of NLR's space-time format using a `reV` output. The `reV generation` and `rep-profiles` outputs mirror the resource file's format so any variable in the resource file will match this structure. This graphic shows a reV capacity factor timeseries array, a map of the average capacity factors derived from it, a glimpse at the meta data associated with the X-Axis, and a glimpse at the timeseries vector associated with the Y-Axis.
 
 ![resource_data_diagram](https://github.com/user-attachments/assets/7b14b266-3e81-4046-b2cb-b97566253b7d)
 
@@ -116,5 +116,5 @@ The [Wind Integration National Dataset Toolkit](https://registry.opendata.aws/nr
 Remote Access using `rex` and `HSDS`
 ===
 
-NREL's resource data is remotely accessible using the HDF Group's Highly Scalable Data Service (`HSDS`). NLR's Resource Extraction Tool (rex), which is integrated into reV, allows users to seamlessly integrate remote resource access into the reV modeling pipeline, though some setup is required. For more guidance on how to setup your computer or server to access NLR data remotely, visit the rex [HSDS guide](https://natlabrockies.github.io/rex/misc/examples.hsds.html). 
+NLR's resource data is remotely accessible using the HDF Group's Highly Scalable Data Service (`HSDS`). NLR's Resource Extraction Tool (rex), which is integrated into reV, allows users to seamlessly integrate remote resource access into the reV modeling pipeline, though some setup is required. For more guidance on how to setup your computer or server to access NLR data remotely, visit the rex [HSDS guide](https://natlabrockies.github.io/rex/misc/examples.hsds.html). 
 
