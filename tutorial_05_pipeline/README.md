@@ -1,7 +1,7 @@
 reV pipeline
 ===========================
 
-This tutorial introduces how to execute multiple reV steps in one single analysis pipeline. We included the config files from the `generation` and `multi-year` module in `tutorial_04_generation_a` and `_b`. To successfully run a reV pipeline, one and only one file with "pipeline" in the name should exist in this directory and contain the config information. `config_pipeline.json` is made with a list of dictionaries where each of them represents one step in the pipeline:
+This tutorial introduces how to execute multiple reV steps in a single analysis pipeline. We included the config files from the `generation` and `multi-year` module in `tutorial_04_generation_a` and `_b`. To successfully run a reV pipeline, one and only one file with "pipeline" in the name should exist in this directory and contain the config information. `config_pipeline.json` is made with a list of dictionaries where each of them represents one step in the pipeline:
 
 ```json
     "pipeline": [
