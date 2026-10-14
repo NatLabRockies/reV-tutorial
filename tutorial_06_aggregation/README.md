@@ -1,6 +1,6 @@
 reV aggregation
 ===
-reV supply curve aggregation combines a high-resolution (e.g. 90m) exclusion dataset with a (typically) lower resolution (e.g. 2km) generation dataset by mapping all data onto the high- resolution grid and aggregating it by a large factor (e.g. 64 or 128). The result is coarsely-gridded data that summarizes capacity and generation potential as well as associated economics under a particular land access scenario. This module can also summarize extra data layers during the aggregation process, allowing for complementary land characterization analysis.
+The `reV-supply-curve-aggregation` module combines a high-resolution (e.g. 90m) exclusion dataset with a (typically) lower resolution (e.g. 2km) generation dataset by mapping all data onto the high- resolution grid and aggregating it by a large factor (e.g. 64 or 128). The result is coarsely-gridded data that summarizes capacity and generation potential as well as associated economics under a particular land access scenario. This module can also summarize extra data layers during the aggregation process, allowing for complementary land characterization analysis.
 
 Descriptions to the config entries of the reV aggregation in `config_aggregation.json` are listed below, following the entry order in the JSON: 
 - `cf_dset`: Dataset name from the reV generation HDF5 output file containing a 1D dataset of mean capacity factor values. This dataset will be mapped onto the high-resolution grid and used to compute the mean capacity factor for non-excluded area. By default, `"cf_mean-means"`.
