@@ -12,7 +12,7 @@ For a full model pipeline, reV requires at least the following inputs:
     - "Resource" here refers to spatial timeseries of atmospheric or geothermal energy resources.
     - HDF5 refers to Hierarchical Data Format, Version 5, which is the data format required for reV's generation module.
     - The datasets stored in these files require a very specific structure.
-    - These can built manually if you have resource data in another format or may be accessed remotely through NREL's API or AWS S3 bucket.
+    - These can built manually if you have resource data in another format or may be accessed remotely through NLR's API or AWS S3 bucket.
 5) **A Project Points CSV File**
     - This refers to a table that instructs reV where to run SAM configurations.
     - A sample Python script in `3_project_points/` will introduce you how to create these.
