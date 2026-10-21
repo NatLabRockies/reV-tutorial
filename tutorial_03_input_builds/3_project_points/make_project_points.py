@@ -27,6 +27,7 @@ def main():
 
     # Now you can subset, as long as the gid refers to the original index
     meta = meta[meta["population"] < 10_000]
+    meta = meta[meta["population"] != -9999]
 
     # All reV needs is config and gid, but you can include other fields
     project_points = meta[["latitude", "longitude", "gid", "config"]]
