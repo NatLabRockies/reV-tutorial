@@ -42,16 +42,18 @@ LAYER_ATTRS = {
 
 
 # To convert from GeoTiffs to the HDF5 file.
-def geotiffs_to_h5():
+def geotiffs_to_h5(overwrite=False):
     """Upload geotiff to a new or existing h5 file."""
-    if EXCL_FPATH.exists():
-        os.remove(EXCL_FPATH)
+    if overwrite:
+        if EXCL_FPATH.exists():
+            os.remove(EXCL_FPATH)
+
     lh5 = LayeredH5(EXCL_FPATH)
     lh5.layers_to_h5(
         layers=LAYER_FPATHS,
         descriptions=LAYER_DESCS,
         attrs=LAYER_ATTRS,
-        replace=False,
+        replace=True,
         check_tiff=True,
         transform_atol=0.01,
         scale_factors=None,
@@ -81,4 +83,4 @@ def back_to_tif_revx():
 
 
 if __name__ == "__main__":
-    geotiffs_to_h5()
+    geotiffs_to_h5(overwrite=True)
