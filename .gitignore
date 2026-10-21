@@ -3,6 +3,7 @@ data/videos/
 
 # MacOS Items
 **/.DS_Store
+**/_attachments.zip
 
 # CLI Items
 .gaps/
