@@ -77,8 +77,7 @@ def back_to_tif_h5py():
 def back_to_tif_revx():
     """Convert HDF5 datasets back to geotiff with rex."""
     lh5 = LayeredH5(EXCL_FPATH)
-    lh5.extract_all_layers(out_dir="./export_2", extract_lat_lon=False
-    )
+    lh5.extract_all_layers(out_dir="./export_2", extract_lat_lon=False)
 
 
 if __name__ == "__main__":
