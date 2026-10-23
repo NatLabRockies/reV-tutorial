@@ -2,12 +2,12 @@
 
 > *"It is a truism that everything affects everything else. More specific to the subject at hand are the observations that the evolution of energy demand depends on the supply options available, while the availability of different supply options is itself influenced by the level of energy demand. **Moreover, both depend on environmental constraints, resource constraints, and the like**."* <br><br> -Alan McDonald, *Energy in a Finite World (1981)*
 
-We can estimate the amount of oil in the Earth or the amount of physical energy embedded in the sunlight hitting its surface, but how much of that can be converted to useable energy? That initial amount of resource will be reduced by how much of it we can realistically access and how much of that we can convert into a useable form (e.g., electricity). This amount is referred to as *"technical potential"*, the estimation of which  is the central purpose of the reV modeling platform. This technical potential may be further reduced by economically viable production cost thresholds, which we refer to as *"techno-economic potential"*. Finally, this third amount can be filtered to an even smaller value that considers the interplay between supply and demand and other social, political, and market variables to represent a realistically deployable amount of generation potential. The reV model is focused only on the technical and techno-economic potential tiers of this assessment model, but is designed to facilitate the later steps (see Figure 1). Resource assessment serve as an input to reV while its outputs serve as inputs to downstream models. This techno-economic potential will vary widely between generation technologies and geographies, as well as technological and economic assumptions of the future.
+We can estimate the amount of oil in the Earth or the amount of physical energy embedded in the sunlight hitting its surface, but how much of that can be converted to useable energy? That initial amount of resource will be reduced by how much of it we can realistically access and how much of that we can convert into a useable form (e.g., electricity). This amount is referred to as *"technical potential"*, the estimation of which  is the central purpose of the reV modeling platform. This technical potential may be further reduced by economically viable production cost thresholds, which we refer to as *"techno-economic potential"*. Finally, this third amount can be filtered to an even smaller value that considers the interplay between supply and demand and other social, political, and market variables to represent a realistically deployable amount of generation potential. The reV model is focused only on the technical and techno-economic potential tiers of this assessment model, but is designed to facilitate the later steps (see Figure 1). Resource assessments serve as an input to reV while its outputs serve as inputs to downstream models. This techno-economic potential will vary widely between generation technologies and geographies, as well as technological and economic assumptions of the future.
 
 <p align="center">
   <img src="./images/tech_potential_re.png" alt="Renewable Energy Technical Potential Levels" width="1200">
   <br>
-  <em><b>Figure 1.</b> Conceptual diagram of potential energy levels for renewable energy. The bottom bar represents NLR models and relative certainty associated with each level.</a>.</em>
+  <em><b>Figure 1.</b> Conceptual diagram of potential energy levels for renewable energy. The bottom bar represents NLR models and relative certainty associated with each level.</em>
 </p>
 
 
@@ -16,10 +16,13 @@ We can estimate the amount of oil in the Earth or the amount of physical energy 
 
 The Renewable Energy Potential model (reV) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-level capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing site-specific techno-economic characteristics across a field of potential sites and 2) the potential energy generation timeseries (or profiles) associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
 
-Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is, or they may wish to use these as inputs in downstream models. One of the more common uses of reV is to develop the field of possible plants for capacity expansion models such as the Regional Energy Deployment System (ReEDS). 
+Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is, or they may wish to use these as inputs in downstream models. One of the more common uses of reV is to develop the field of possible plants for capacity expansion models such as the Regional Energy Deployment System (ReEDS), but there are many downstream applications (see Figure 2).
 
-## Renewables Vs. Non-renewables
-We’ll try to understand how energy assessments happen across the energy spectrum – renewables vs. oil & gas. Therefore, how to define resource potential is important. The energy generator has to be in the same place where there is resource availability. Therefore, understanding where the resource is available and how much is available brings us to the starting point to any kind of energy analysis.
+<p align="center">
+  <img src="./images/nlr-model-network.png" alt="Strategic Energy Analysis Center Model Connections" width="1200">
+  <br>
+  <em><b>Figure 2.</b> Input/output connections between a subset of energy system models at NLR's Strategic Energy Analysis Center.</em>
+</p>
 
 ### What is a resource?
 - Resource is the input utilized for energy generation (electricity) by a generator (Wind Turbine, Solar Panel, Steam Turbine etc.)
