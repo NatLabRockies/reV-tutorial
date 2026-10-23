@@ -12,19 +12,35 @@ We can estimate the amount of oil in the Earth or the amount of physical energy 
 
 
 
+
+
 ## The Renewable Energy Potential Model
 
 The Renewable Energy Potential model (reV) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-level capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing site-specific techno-economic characteristics across a field of potential sites and 2) the potential energy generation timeseries (or profiles) associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
 
-Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is, or they may wish to use these as inputs in downstream models. One of the more common uses of reV is to develop the field of possible plants for capacity expansion models such as the Regional Energy Deployment System (ReEDS), but there are many downstream applications (see Figure 2).
+Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is useful, or they may wish to use these as inputs in downstream models. When combined with cost thresholds, it can be very useful to identify, at a high-level, areas where development may be economically feasible. See Figure 2 for an illustration of this, where a the levelized costs of energy production (LCOE) was modeled with reV, filtered by a pre-determined threshold of viability at $45/MWh, and mapped with existing plant locations. In this case, the field of techno-economic potential lined up well with the locations of actual wind plants, despite the use of only a single "baseline" turbine design. 
+
+<p align="center">
+  <img src="./images/rev_potential_vs_deployment.jpg" alt="Strategic Energy Analysis Center Model Connections" width="1200">
+  <br>
+  <em><b>Figure 2.</b> reV-derived techno-economic potential outputs filtered at $45/MWh and mapped with existing locations of wind plants in the continguous United States.</em>
+</p>
+
+One of the more common uses of reV is to develop the field of possible plants for capacity expansion models such as the Regional Energy Deployment System (ReEDS), but there are many downstream applications. Figure 3 shows a subset of model connections used at the Strategic Energy Analysis Center of NLR with the reV-SAM modeling pair situated at the center of the network.
 
 <p align="center">
   <img src="./images/nlr-model-network.png" alt="Strategic Energy Analysis Center Model Connections" width="1200">
   <br>
-  <em><b>Figure 2.</b> Input/output connections between a subset of energy system models at NLR's Strategic Energy Analysis Center.</em>
+  <em><b>Figure 3.</b> Input/output connections between a subset of energy system models at NLR's Strategic Energy Analysis Center.</em>
 </p>
 
-### What is a resource?
+
+
+
+
+### Resource Data
+
+
 - Resource is the input utilized for energy generation (electricity) by a generator (Wind Turbine, Solar Panel, Steam Turbine etc.)
 Renewable energy is a site-specific resource and cannot be transported elsewhere for energy generation. Non-renewables like Crude oil, Natural gas, Coal are not site-specific resources, and they can be transported to a generation site.
 
@@ -101,8 +117,3 @@ This section includes abbreviations, concepts, knowledge gaps that might not be 
 - SAM = Systems Advisor Model. SAM is an open-source techno-economic software model that simulates estimating power generation and financial viability for renewable energy technologies...(https://sam.nrel.gov).
 - LCOE = Levelized Cost of Energy. LCOE represents the average revenue per unit of electricity generated that would be required to recover the costs of building and operating a generating plant during an assumed financial life. 
 - Supply curves = represent the cost and amount of energy at all reV-modeled potential sites at a snapshot in time. 
-
-## Images to be assimilated
-Put any candidates images here.
-
-
