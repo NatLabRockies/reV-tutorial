@@ -26,7 +26,7 @@ Users may be interested in the direct outputs of reV, to the degree that a theor
   <em><b>Figure 2.</b> reV-derived techno-economic potential outputs filtered at $45/MWh and mapped with existing locations of wind plants in the continguous United States.</em>
 </p>
 
-One of the more common uses of reV is to develop the field of possible plants for capacity expansion models such as the Regional Energy Deployment System (ReEDS), but there are many downstream applications. Figure 3 shows a subset of model connections used at the Strategic Energy Analysis Center of NLR with the reV-SAM modeling pair situated near the base of the network.
+One of the more common uses of reV is to develop the field of possible plants for capacity expansion models such as the Regional Energy Deployment System (ReEDS), but there are many downstream applications. Figure 3 shows a subset of model connections used at the Strategic Energy Analysis Center of NLR with the reV-SAM modeling pair situated near the base of the network, connecting directly or indirectly to capacity expansion, resource adequacy, economic, and stability analysis tools.
 
 <p align="center">
   <img src="./images/nlr-model-network.png" alt="Strategic Energy Analysis Center Model Connections" width="1200">
