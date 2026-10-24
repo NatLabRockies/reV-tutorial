@@ -42,9 +42,9 @@ The original energy level table in the 2011 Renewable Energy Resource Assessment
 | Technical | **Limit potential to incorporate technical and land use challenges.** This type of assessment allows for an understanding of renewable energy potential with realistic land use and technology capabilities, but without the economic and market restrictions that can be altered through policy decisions and market changes. Variations in technical potential may result depending on whether current technology performance, projected performance, or theoretical limits to performance are used. | Technology development limitations; land use; time frame of scenario |
 | Cost | **Limit potential by incorporating cost information.** Assumptions related to project costs have a high amount of uncertainty and can change rapidly, so projections must be clear and consistent regarding the assumptions of projected cost. | Cost analysis; projected technology and fuel costs |
 | Market | **Limit the potential by incorporating market barriers (interconnection issues, private investment, consumer response, etc.).** Market dynamics are difficult to predict. Often, these are best suited to be set up as comparisons between a well-defined "business as usual" case and a specific policy or consumer-behavior case. Studying the interaction of multiple market changes is complicated because it requires a large number of assumptions, which lead to uncertainty in results. | Policy implementation and impacts; regulatory limits; consumer response and investor response |
-
+<p align="center">
 <em><b>Table 1.</b> Descriptions of each level represented in the original formulation of potential energy underpinning reV (Originally Table 4-1 in the 2011 update of DOE EERE (2006))</em>
-
+</p>
 
 
 ## The Renewable Energy Potential Model
