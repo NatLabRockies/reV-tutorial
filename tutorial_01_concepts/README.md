@@ -14,13 +14,13 @@ We can estimate the amount of radiant energy embedded in the sunlight hitting th
 
 There are several definitions or ways of imagining technical potential. An early study, the study quoted above (Häfele et al, 1981), thinks of technical potential by asking:
 
->"...for each of the different possible energy sources, what **its ultimate technical potential would be if only resource constraints and limitations on technological buildup rates were considered**. Problems of environmental impacts, safety questions, or mismatches between supply and demand patterns are initially assumed essentially solvable, and the constraints of competitive economics are left for Section 4."
+>"...for each of the different possible energy sources, what **its ultimate technical potential would be if only resource constraints and limitations on technological buildup rates were considered**. Problems of environmental impacts, safety questions, or mismatches between supply and demand patterns are initially assumed essentially solvable, and the constraints of competitive economics are left for Section 4 [1980-2030: Demand, Conservation, and Two Scenarios]."
 
 
 However, this definition is not quite detailed and specific enough to fully describe technical potenital as estimated by reV. More recent studies, such as the Angliviel et al, 2025 (and also defining economic and feasible/market potential), define technical potential more explicitly as 
 
  >"...**the amount of electricity that could be produced with current technologies when accounting for geographical and technical limitations as well as conversion efficiencies**; economic potential, which also includes cost; and feasible potential, which accounts for societal and environmental constraints."
-
+]
 
 In the context of the reV model, we will use the definition provided by the authors of its parent study (Lopez et al, 2012) who more specifically identify the categories of constraints used to estimate it (along side economic and market potential): 
 
@@ -30,10 +30,10 @@ In the context of the reV model, we will use the definition provided by the auth
 <p align="center">
   <img src="./images/energy_potential_levels_pyramid.png" alt="Renewable Energy Technical Potential Levels" width="600">
   <br>
-  <em><b>Figure 2.</b> A second, older, conceptual diagram of potential energy levels for renewable energy. Both this and Figure 1 are based Table 4-1 in the 2011 update of DOE EERE (2006)</em>
+  <em><b>Figure 2.</b> An earlier version of the conceptual diagram of potential energy levels for renewable energy. Both this and Figure 1 are based Table 4-1 in the 2011 update of DOE EERE (2006)</em>
 </p>
 
-The original energy level table in the 2011 Renewable Energy Resource Assessment Report to Congress, as described in Figures 1, 2, and Lopez et al. 2012, is recreated below. This may require a note of clarification between considering constraints you may find in more recent assessments of techno-economic potential (e.g., Lopez et al, 2025): regulatory limits that specifically constrain land-use may be considered as technical exclusions to potential development and distinct from the regulatory limits described below as a market constraint. 
+The original energy level table in the 2011 Renewable Energy Resource Assessment Report to Congress, as described in Figures 1, 2, and Lopez et al. 2012, is recreated below. This may require a note of clarification considering constraints you may find in more recent assessments of techno-economic potential (e.g., Lopez et al, 2025): regulatory limits that specifically constrain land-use may be considered as technical exclusions to potential development and distinct from the regulatory limits described below as a market constraint. 
 
 
 | Assessment Category | Purpose | Key Assumptions |
@@ -49,64 +49,74 @@ The original energy level table in the 2011 Renewable Energy Resource Assessment
 
 ## The Renewable Energy Potential Model
 
-The Renewable Energy Potential model (reV) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-level capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing techno-economic characteristics across a field of potential sites and 2) the potential energy generation timeseries (or profiles) associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
+The Renewable Energy Potential model (reV) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-evel capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing techno-economic characteristics across a field of potential sites ("supply curves") and 2) the potential energy generation timeseries ("representative profiles") associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
 
-Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is useful, or they may wish to use these as inputs in downstream models. For example, when combined with cost thresholds, it can be useful to use reV to identify areas where development may be economically feasible. See Figure 3 for an illustration of this: here the levelized costs of energy production (LCOE) for a turbine were modeled with reV, filtered by a pre-determined threshold of viability at $45/MWh, and mapped with existing plant locations. In this case, the field of techno-economic potential lined up well with the locations of actual wind plants, despite the use of only a single "baseline" turbine design. Increased energy capture efficiency and lower per unit costs of future turbines may also be modeled, revealing their potential to expand wind into new areas of economic viability.
+Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is useful, or they may wish to use these as inputs in downstream models. For example, when combined with cost thresholds, it can be useful to use reV to identify areas where development may be economically feasible. See Figure 3 for an illustration of this: here the levelized costs of energy production (LCOE) for a turbine were modeled with reV, filtered by a pre-determined threshold of viability at $45/MWh, and mapped with existing plant locations. In this case, the field of techno-economic potential lined up well with the locations of actual wind plants, despite the use of only a single "baseline" turbine design. Increased energy capture efficiency and lower per unit costs of future turbines may also be modeled, revealing their potential to expand wind into new areas of economic viability. Additionally, because reV is modular (as described below), analysts can use reV for a variety of different use cases and output types. 
+
 
 <p align="center">
-  <img src="./images/rev_potential_vs_deployment.jpg" alt="Strategic Energy Analysis Center Model Connections" width="1200">
+  <img src="./images/rev_potential_vs_deployment.jpg" alt="Strategic Energy Analysis Center Model Connections" width="1000">
   <br>
   <em><b>Figure 3.</b> reV-derived techno-economic potential outputs filtered at $45/MWh and mapped with existing locations of wind plants in the continguous United States.</em>
 </p>
 
-One of the more common uses of reV is to develop the field of possible plants for capacity expansion models such as the Regional Energy Deployment System (ReEDS), and reV has been co-developed with ReEDS over many years. However, there are many downstream applications. Figure 4 represents a subset of model connections used at the Strategic Energy Analysis Center (SEAC) of NLR. It shows the reV-SAM modeling pair situated near the base of the network, connecting directly or indirectly to capacity expansion, resource adequacy, economic, and stability analysis tools.
+One of the more common uses of reV is to develop the field of possible plants (the supply curve described below) for capacity expansion models such as the Regional Energy Deployment System (ReEDS), and reV has been co-developed with ReEDS over many years. However, there are many downstream applications. Figure 4 represents a subset of model connections used at the Strategic Energy Analysis Center (SEAC) of NLR. It shows the reV-SAM modeling pair situated near the base of the network, connecting directly or indirectly to capacity expansion, resource adequacy, economic, and stability analysis tools.
 
 <p align="center">
-  <img src="./images/nlr-model-network.png" alt="Strategic Energy Analysis Center Model Connections" width="1200">
+  <img src="./images/nlr-model-network.png" alt="Strategic Energy Analysis Center Model Connections" width="1000">
   <br>
   <em><b>Figure 4.</b> Input/output connections between a subset of energy system models at NLR's Strategic Energy Analysis Center.</em>
 </p>
 
---------------
-### Resource Data
+# The Supply Curve
 
-- Resource is the input utilized for energy generation (electricity) by a generator (Wind Turbine, Solar Panel, Steam Turbine etc.)
-Renewable energy is a site-specific resource and cannot be transported elsewhere for energy generation. Non-renewables like Crude oil, Natural gas, Coal are not site-specific resources, and they can be transported to a generation site.
+A "supply curve" in reV terminology refers to a set of individual potential model farms characterized by capacity, generation, and costs. This is the standard target output for a reV run. A common way to visualize this dataset is to sort it by costs (e.g., LCOE) and plot cumulative capacity. This enables a user to quickly see how much capacity exists under any cost threshold. Figure 5 shows an example supply curve 
 
-
-## Resource Potential
-The resource potential is the theoretical availability of renewable energy across an area is resource potential. It quantifies the energy content of a resource at specific location. There are two resource datasets developed at NREL for understanding solar resource potential and wind resource potential:
-- National Solar Radiation Database (NSRDB) for solar (Sengupta et al. 2018)
-- Wind Integrated National Dataset Toolkit (WTK) for wind (Draxl et al. 2015)
-
-![nsrdb_coverage_map_042024](https://github.com/user-attachments/assets/a3b7778d-b126-46ef-91d1-73a2447aa216)
-*Source: Geospatial Data Science Group - National Renewable Energy Laboratory (2024).* 
-
-![wtk_coverage_map_042024](https://github.com/user-attachments/assets/302cf3e2-aaf4-407d-8172-a175ec0e6c60)
-*Source: Geospatial Data Science Group - National Renewable Energy Laboratory (2024).* 
-
-
-## Technical Potential
-### Define technical potential
-- Technical potential refers to the maximum amount of capacity and generation possible in an area, given physical, technological and regulatory constraints (refer to reV 2019 & reV 2023 reports)
-- Technical potential is a measure of resource potential that could be developed based on assumptions of the developable area defined by the user
-    - For example, the user can limit development by land ownership, terrain, land use/cover, and urban areas, as well as other custom inputs
-- The benefit of assessing technical potential is that it establishes an upper boundary estimate of development potential (Lopez et al. 2012)
-
-- Contextualize in terms of broader energy availability assessment (e.g., geological surveys in the Oil and Gas industry; see figure below)
-    - Geological surveys are conducted in the oil and gas industries to assess the available total resources underground, which is referred to the in-place resources. The tech pot in renewable energy has a similar definition to the in-place resources in the oil and gas industry, where we are measuring the maximum available energy or resources after applying exclusions and contraints. 
-
-*Oil and Gas Energy Assessments - Levels of Potential*
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8c1592e6-5a45-4c3e-a254-e6e59e01ab71" width="1000">
+  <img src="./images/supply_curve_illustration.png" alt="reV Supply Curve Illustration" width="1000">
+  <br>
+  <em><b>Figure 5.</b> A illustrative supply curve representing LCOE both as a cumulative capacity plot and a map. Sample locations are associated with their points along the cumulative capacity curve (representing costs with and without spur-line connections).</em>
 </p>
 
-<!-- ![oil_gas_potential_cirlces_diagram](https://github.com/user-attachments/assets/8c1592e6-5a45-4c3e-a254-e6e59e01ab71) -->
-<p align="center">Source: U.S. Energy Information Administration ([2014](https://www.eia.gov/todayinenergy/detail.php?id=17151))</p>
+
+### Levels of Detail
+
+A valuable characteristic of reV is the level of detail it enables. However, because of the various input datasets required to build a reV supply curve, there are many different spatial scales that must be reconciled. How this is done will be described in the subsequent tutorials, but to give an idea of the types of resolutions we are working with, a typical reV run with begin with a 2-4 km gridded resource dataset (4 to 16 km<sup>2</sup>), use a 90m national land use grid (~0.0081 km<sup>2</sup>) , and ultimately re-aggregate to an output that could represent a typical solar farm in, say, a 3 km<sup>2</sup> grid (~9 km<sup>2</sup>), a wind farm in an 11.5 km grid (~132 km<sup>2</sup>), or any other scale appropriate for the target technology or desired by the user. 
 
 
-Ideally, we'll convince Galen or Donna or Anthony to make a guest appearance and describe their thought process when they developed the technical potential analysis approach...this could also lead directly into the Model
+<p align="center">
+  <img src="./images/rev_detail_levels.jpg" alt="reV Detail Levels" width="1000">
+  <br>
+  <em><b>Figure 6.</b> An illustration of the various levels of spatial detail represented in the reV model.</em>
+</p>
+
+
+## Resource Data
+
+The resource data used in reV represents the theoretical availability of a renewable energy across an area over time. It also quantifies the energy content of a resource at any specific location. There are several resource datasets developed at NLR for understanding, including the National Solar Radiation Database (NSRDB) (Sengupta et al. 2018, Figure 7), the Wind Integrated National Dataset Toolkit (WTK) (Draxl et al. 2015, Figure 8), Geothermal Resource Data (e.g., Zuckerman et al, 2025, Figure 9), and others:
+
+
+<p align="center">
+  <img src="./images/World NSRDB Robinson 2025 05 28.jpg" alt="NSRDB Global Coverage" width="1000">
+  <br>
+  <em><b>Figure 7.</b> The National Solar Radiation Database and its contributing radiation datasets.</em>
+</p>
+
+
+<p align="center">
+  <img src="./images/World Wind Robinson 2025 09 12 v3 7.jpg" alt="WTK/WDB Global Coverage" width="1000">
+  <br>
+  <em><b>Figure 7.</b> Global Coverage for the various NLR Wind Resource Datasets.</em>
+</p>
+
+
+<p align="center">
+  <img src="./images/CONUS Geothermal Resource.jpg" alt="NSRDB Global Coverage" width="1000">
+  <br>
+  <em><b>Figure 8.</b> Development suitability for enhanced geothermal systems in the United States.</em>
+</p>
+
 
 
 ## Introducing the reV Model 
@@ -134,15 +144,13 @@ Overview of the input-output pipeline of reV:
 - Describe the open-source nature of reV...anyone can use it, though challenges exists in acquiring and/or building input datasets, which we'll cover in Episode #3.
 - Describe who all is using it.
 
-### Here need to add info to introduce the NREL Modeling Ecosystem
-![seac_ecosystem](https://github.com/user-attachments/assets/74ceb6cc-9b2f-463a-84cf-873abe6f673e)
 
-## Renewable energy glossary
+
+# Renewable energy glossary
 This section includes abbreviations, concepts, knowledge gaps that might not be familiar to the audiences; we can expand this glossary along the tutorial making process. 
 - SAM = Systems Advisor Model. SAM is an open-source techno-economic software model that simulates estimating power generation and financial viability for renewable energy technologies...(https://sam.nrel.gov).
 - LCOE = Levelized Cost of Energy. LCOE represents the average revenue per unit of electricity generated that would be required to recover the costs of building and operating a generating plant during an assumed financial life. 
 - Supply curves = represent the cost and amount of energy at all reV-modeled potential sites at a snapshot in time. 
-
 
 
 # References
@@ -151,9 +159,12 @@ Angliviel de La Beaumelle, Nils, Kornelis Blok, Jacques A. de Chalendar, Leon Cl
 
 DOE Office of Energy Efficiency and Renewable Energy (EERE). (October 2006, updated January 2011). “Report to Congress on Renewable Energy Resource Assessment Information for the United States.” January 2011 (EPACT) Prepared by the National Renewable Energy Laboratory.
 
+Draxl, Caroline, Andrew Clifton, Bri-Mathias Hodge, and Jim McCaa. "The wind integration national dataset (wind) toolkit." Applied Energy 151 (2015): 355-366.
+
 Häfele, Wolf, Jeanne Anderer, Alan McDonald, and Nebojsa Nakicenovic. Energy in a Finite World: Paths to a Sustainable Future (Volume 1). Vol. 1. Ballinger, 1981.
 
 Lopez, Anthony, Billy Roberts, Donna Heimiller, Nate Blair, and Gian Porro. US renewable energy technical potentials: a GIS-based analysis. No. NREL/TP--6A20-51946. National Renewable Energy Laboratory (NREL), Golden, CO (United States), 2012.
 
 Roberts, Owen, Travis Williams, Anthony Lopez, Galen Maclaurin, and Annika Eberle. Exploring the impact of near-term innovations on the technical potential of land-based wind energy. No. NREL/TP-5000-81664. National Renewable Energy Laboratory (NREL), Golden, CO (United States), 2023.
 
+Sengupta, Manajit, Yu Xie, Anthony Lopez, Aron Habte, Galen Maclaurin, and James Shelby. "The national solar radiation data base (NSRDB)." Renewable and sustainable energy reviews 89 (2018): 51-60.
