@@ -121,12 +121,12 @@ The resource data used in reV represents the theoretical availability of a renew
 
 ## reV's Modular Design
 
-Another import characteristic of reV to note is its highly modular design. The outputs of each module are piped as inputs into the next module (as illustrated in Figure 9 below) and the user may stop at any point in the process. This increases the flexibility of reV for users. For example, a user may stop at the "System Generation Modeling" (the reV-generation module) if they are not interested in land use or transmission or they may stop at the supply curve step (reV-supply-curve) if they only require average capacity factors after the land use step (reV-supply-curve-aggregation) and don't need the final time series data. Additionally, this allows for branching scenario modeling. The user may build a set of generation outputs for a range of future technological advancement scenarios and then may build a number of supply curves from each of those for a range of land access or regulatory scenarios. This is described in more detail on the landing page for the reV-tutorial, whose sub-tutorials will generally follow the reV modeling pipeline order.
+Another import characteristic of reV is its highly modular design. The outputs of each module are piped as inputs into the next module (as illustrated in Figure 9 below) and the user may stop at any point in the process. This increases the flexibility of reV for users. For example, a user may stop at the "System Generation Modeling" (the reV-generation module) if they are not interested in land use or transmission or they may stop at the supply curve step (reV-supply-curve) if they don't need the final time series data and only require average capacity factors after the land use step (reV-supply-curve-aggregation). Additionally, this allows for branching scenario modeling. The user may build a set of generation outputs for a range of future technological advancement scenarios and may then build a number of supply curves from each of those for a range of land access scenarios. The pipeline is described in more detail on the landing page for the reV-tutorial, whose sub-tutorials will generally follow the reV modeling pipeline order.
 
 <p align="center">
   <img src="./images/rev_flow_chart.png" alt="reV Flow Chart" width="1000">
   <br>
-  <em><b>Figure 9.</b> The standard modular flow in the reV modeling pipeline.</em>
+  <em><b>Figure 9.</b> Standard modular flow in the reV modeling pipeline.</em>
 </p>
 
 
