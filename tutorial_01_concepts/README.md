@@ -94,7 +94,7 @@ A valuable characteristic of reV is the level of detail it enables. However, bec
 
 ## Resource Data
 
-The resource data used in reV represents the theoretical availability of a renewable energy across an area over time. It also quantifies the energy content of a resource at any specific location. There are several resource datasets developed at NLR for understanding, including the National Solar Radiation Database (NSRDB) (Sengupta et al. 2018, Figure 7), the Wind Integrated National Dataset Toolkit (WTK) (Draxl et al. 2015, Figure 8), Geothermal Resource Data (e.g., Zuckerman et al, 2025, Figure 9), and others:
+The resource data used in reV represents the theoretical availability of a renewable energy across an area over time. It also quantifies the energy content of a resource at any specific location. There are several resource datasets used by NLR reV modelers, including the National Solar Radiation Database (NSRDB) (Sengupta et al. 2018, Figure 7), the Wind Integrated National Dataset Toolkit (WTK) (Draxl et al. 2015, Figure 8), Geothermal Resource Data (e.g., Aljubran and Horne, 2024, Figure 9), and others:
 
 
 <p align="center">
@@ -134,6 +134,8 @@ Another import characteristic of reV is its highly modular design. The outputs o
 # References
 
 Angliviel de La Beaumelle, Nils, Kornelis Blok, Jacques A. de Chalendar, Leon Clarke, Andrea N. Hahmann, Jonathan Huster, Gregory F. Nemet, Dhruv Suri, Thomas B. Wild, and Inês ML Azevedo. "The global technical, economic, and feasible potential of renewable electricity." Annual Review of Environment and Resources 48, no. 1 (2023): 419-449.
+
+Aljubran, Mohammad, and Roland Horne. Stanford Thermal Earth Model for the Conterminous United States. No. 1592. DOE Geothermal Data Repository; Stanford University, 2024.
 
 DOE Office of Energy Efficiency and Renewable Energy (EERE). (October 2006, updated January 2011). “Report to Congress on Renewable Energy Resource Assessment Information for the United States.” January 2011 (EPACT) Prepared by the National Renewable Energy Laboratory.
 
