@@ -49,7 +49,7 @@ The original energy level table in the 2011 Renewable Energy Resource Assessment
 
 ## The Renewable Energy Potential Model
 
-The Renewable Energy Potential model (reV) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-evel capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing techno-economic characteristics across a field of potential sites ("supply curves") and 2) the potential energy generation timeseries ("representative profiles") associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
+The Renewable Energy Potential model (abbreviated as reV with the "V" refering the physics term electrical potential) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-evel capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing techno-economic characteristics across a field of potential sites ("supply curves") and 2) the potential energy generation timeseries ("representative profiles") associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
 
 Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is useful, or they may wish to use these as inputs in downstream models. For example, when combined with cost thresholds, it can be useful to use reV to identify areas where development may be economically feasible. See Figure 3 for an illustration of this: here the levelized costs of energy production (LCOE) for a turbine were modeled with reV, filtered by a pre-determined threshold of viability at $45/MWh, and mapped with existing plant locations. In this case, the field of techno-economic potential lined up well with the locations of actual wind plants, despite the use of only a single "baseline" turbine design. Increased energy capture efficiency and lower per unit costs of future turbines may also be modeled, revealing their potential to expand wind into new areas of economic viability. Additionally, because reV is modular (as described below), analysts can use reV for a variety of different use cases and output types. 
 
@@ -119,38 +119,16 @@ The resource data used in reV represents the theoretical availability of a renew
 
 
 
-## Introducing the reV Model 
-One of the main responsibility of GDS is the renewable energy potential a.k.a. reV model. What is it? 
+## reV's Modular Design
 
-- Background info about reV
-    - Why it's called reV? It's a short for The Renewable Energy Potential (reV)
-    - reV is an open-source geospatial platform for assessing system performance, available capacity, distance to transmission, and total costs for potential solar and wind energy deployment at regional to continental scales.
-    - Potential and intended users of reV model outputs include utility planners, regional and national agencies, project and land developers, internal NREL modelers, and external researchers. 
+Another import characteristic of reV to note is its highly modular design. The outputs of each module are piped as inputs into the next module (as illustrated in Figure 9 below) and the user may stop at any point in the process. This increases the flexibility of reV for users. For example, a user may stop at the "System Generation Modeling" (the reV-generation module) if they are not interested in land use or transmission or they may stop at the supply curve step (reV-supply-curve) if they only require average capacity factors after the land use step (reV-supply-curve-aggregation) and don't need the final time series data. Additionally, this allows for branching scenario modeling. The user may build a set of generation outputs for a range of future technological advancement scenarios and then may build a number of supply curves from each of those for a range of land access or regulatory scenarios. This is described in more detail on the landing page for the reV-tutorial, whose sub-tutorials will generally follow the reV modeling pipeline order.
 
-The reV model supports broadly three components:
-- Simulating renewable energy generation and cost potential across a landscape.
-- Simulating discrete generation plants with spatial constraints.
-- reV serves a spatial coordinator for the Systems Advisor Model (SAM). It can help connect renewable energy plants to a transmission. 
+<p align="center">
+  <img src="./images/rev_flow_chart.png" alt="reV Flow Chart" width="1000">
+  <br>
+  <em><b>Figure 9.</b> The standard modular flow in the reV modeling pipeline.</em>
+</p>
 
-Overview of the input-output pipeline of reV: 
-![rev_flow](https://github.com/user-attachments/assets/e5ab2d7c-e7fd-4201-801a-a55ec6156136)
-
-- How speciifcally does the model represent technical potential (e.g., what are the outputs.)
-    - The LCOE output can serve as the end point of a reV analysis, providing insight into economic competitiveness, relative performance competitiveness, and regional differences driven by cost assumptions. LCOE estimates can also be used downstream in the supply curves. 
-    - The tech pot is represented as a function of the available land area after applying exclusions, the net capacity factor estimated by the generation module, and a user-defined power density appropriate for the specific technology. The power density value represents the maximum potential capacity for a given unit of area (e.g., MW/km2). 
-
-- How does this model fit into the broader energy modeling ecosystem at NREL.
-
-- Describe the open-source nature of reV...anyone can use it, though challenges exists in acquiring and/or building input datasets, which we'll cover in Episode #3.
-- Describe who all is using it.
-
-
-
-# Renewable energy glossary
-This section includes abbreviations, concepts, knowledge gaps that might not be familiar to the audiences; we can expand this glossary along the tutorial making process. 
-- SAM = Systems Advisor Model. SAM is an open-source techno-economic software model that simulates estimating power generation and financial viability for renewable energy technologies...(https://sam.nrel.gov).
-- LCOE = Levelized Cost of Energy. LCOE represents the average revenue per unit of electricity generated that would be required to recover the costs of building and operating a generating plant during an assumed financial life. 
-- Supply curves = represent the cost and amount of energy at all reV-modeled potential sites at a snapshot in time. 
 
 
 # References
