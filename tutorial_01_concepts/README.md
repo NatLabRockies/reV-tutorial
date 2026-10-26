@@ -98,21 +98,21 @@ The resource data used in reV represents the theoretical availability of a renew
 
 
 <p align="center">
-  <img src="./images/World NSRDB Robinson 2025 05 28.jpg" alt="NSRDB Global Coverage" width="1000">
+  <img src="./images/world_nsrdb_robinson_20260412.jpg" alt="NSRDB Global Coverage" width="1000">
   <br>
   <em><b>Figure 7.</b> The National Solar Radiation Database and its contributing radiation datasets.</em>
 </p>
 
 
 <p align="center">
-  <img src="./images/World Wind Robinson 2025 09 12 v3 7.jpg" alt="WTK/WDB Global Coverage" width="1000">
+  <img src="./images/world_wind_robinson_20260414.jpg" alt="WTK/WDB Global Coverage" width="1000">
   <br>
   <em><b>Figure 7.</b> Global Coverage for the various NLR Wind Resource Datasets.</em>
 </p>
 
 
 <p align="center">
-  <img src="./images/CONUS Geothermal Resource.jpg" alt="NSRDB Global Coverage" width="1000">
+  <img src="./images/national_map_geothermal_egs_2026.png" alt="NSRDB Global Coverage" width="1000">
   <br>
   <em><b>Figure 8.</b> Development suitability for enhanced geothermal systems in the United States.</em>
 </p>
