@@ -94,7 +94,7 @@ A valuable characteristic of reV is the level of detail it enables. However, bec
 
 ## Resource Data
 
-The resource data used in reV represents the theoretical availability of a renewable energy across an area over time. It also quantifies the energy content of a resource at any specific location. There are several resource datasets used by NLR reV modelers, including the National Solar Radiation Database (NSRDB) (Sengupta et al. 2018, Figure 7), the Wind Integrated National Dataset Toolkit (WTK) (Draxl et al. 2015, Figure 8), Geothermal Resource Data (e.g., Aljubran and Horne, 2024, Figure 9), and others:
+The resource data used in reV represents the theoretical availability of a renewable energy across an area over time. It also quantifies the energy content of a resource at any specific location. There are several resource datasets used by NLR reV modelers, including the National Solar Radiation Database (NSRDB) (Sengupta et al., 2018, Figure 7), the Wind Integrated National Dataset Toolkit (WTK) (Draxl et a., 2015, Figure 8), Geothermal Resource Data (e.g., Aljubran and Horne, 2024, Figure 9), and others:
 
 
 <p align="center">
