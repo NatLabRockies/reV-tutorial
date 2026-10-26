@@ -70,7 +70,7 @@ One of the more common uses of reV is to develop the field of possible plants (t
 
 # The Supply Curve
 
-A "supply curve" in reV terminology refers to a set of individual potential model farms characterized by capacity, generation, and costs. This is the standard target output for a reV run. A common way to visualize this dataset is to sort it by costs (e.g., LCOE) and plot cumulative capacity. This enables a user to quickly see how much capacity exists under any cost threshold. Figure 5 shows an example supply curve 
+A "supply curve" in reV terminology refers to a set of individual potential model farms characterized by capacity, generation, and costs. This is the standard target output for a reV run. A common way to visualize this dataset is to sort it by costs (e.g., LCOE) and plot cumulative capacity. This enables a user to quickly see how much capacity exists under any cost threshold. Figure 5 shows an example reV output dataset for the contiguous United States and highlights where a few sample locations land along the supply curve. 
 
 
 <p align="center">
