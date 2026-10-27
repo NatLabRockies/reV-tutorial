@@ -16,7 +16,7 @@ There are several definitions or ways of imagining technical potential. An early
 
 >"...for each of the different possible energy sources, what **its ultimate technical potential would be if only resource constraints and limitations on technological buildup rates were considered**. Problems of environmental impacts, safety questions, or mismatches between supply and demand patterns are initially assumed essentially solvable, and the constraints of competitive economics are left for Section 4 [1980-2030: Demand, Conservation, and Two Scenarios]."
 
-However, this definition is not quite detailed and specific enough to fully describe technical potenital as estimated by reV. More recent studies, such as Angliviel et al, 2023 (also defining economic and feasible/market potential), get closer to how the reV developers define technical potential, though they separate into two categories: 
+However, this definition is not quite detailed and specific enough to fully describe technical potenital as estimated by reV. More recent studies, such as Angliviel et al, 2023 (also defining economic and feasible/market potential), get closer to how the reV developers define technical potential, though they separate it into two categories: 
 
 >"Geographical potential, the amount of theoretical potential that is available in suitable areas. The assessment may exclude protected land area or the built environment. **Technical potential, the amount of electricity that can be produced in available and suitable areas given current (or soon-to-be-developed) technologies, specifications, and efficiencies. Technical potential includes, for instance, the conversion efficiency of solar panels or wind turbines**. "
 
@@ -47,7 +47,7 @@ The original energy level table in the 2011 Renewable Energy Resource Assessment
 
 ## The Renewable Energy Potential Model
 
-The Renewable Energy Potential model (abbreviated as reV with the "V" refering the physics term electrical potential) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-evel capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing techno-economic characteristics across a field of potential sites ("supply curves") and 2) the potential energy generation timeseries ("representative profiles") associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
+The Renewable Energy Potential model (abbreviated as reV with the capital "V" referencing the physics term for electrical potential) is designed to provide large scale and detailed estimates of techno-economic potential for use in energy resource assessments. In general, the outputs of reV represent the top-level capacity and generation potential for a given technology in a given place as well as the costs associated with these amounts. The output data comes in two basic varieties: 1) summary tables describing techno-economic characteristics across a field of potential sites ("supply curves") and 2) the potential energy generation timeseries ("representative profiles") associated with each site. It is designed to be as flexible as possible and these outputs may be provided at any spatial and temporal resolution the reV analyst has input data for. 
 
 Users may be interested in the direct outputs of reV, to the degree that a theoretical maximum potential estimate is useful, or they may wish to use these as inputs in downstream models. For example, when combined with cost thresholds, it can be useful to use reV to identify areas where development may be economically feasible. See Figure 3 for an illustration of this: here the levelized costs of energy production (LCOE) for a turbine were modeled with reV, filtered by a pre-determined threshold of viability at $45/MWh, and mapped with existing plant locations. In this case, the field of techno-economic potential lined up well with the locations of actual wind plants, despite the use of only a single "baseline" turbine design. Increased energy capture efficiency and lower per unit costs of future turbines may also be modeled, revealing their potential to expand wind into new areas of economic viability. Additionally, because reV is modular (as described below), analysts can use reV for a variety of different use cases and output types. 
 
@@ -80,7 +80,7 @@ A "supply curve" in reV terminology refers to a set of individual potential mode
 
 ### Levels of Detail
 
-A valuable characteristic of reV is the level of detail it enables. However, because of the various input datasets required to build a reV supply curve, there are many different spatial scales that must be reconciled. How this is done will be described in the subsequent tutorials, but to give an idea of the types of resolutions we are working with, a typical reV run with begin with a 2-4 km gridded resource dataset (4 to 16 km<sup>2</sup>), use a 90m national land use grid (~0.0081 km<sup>2</sup>) , and ultimately re-aggregate to an output that could represent a typical solar farm in, say, a 3 km<sup>2</sup> grid (~9 km<sup>2</sup>), a wind farm in an 11.5 km grid (~132 km<sup>2</sup>), or any other scale appropriate for the target technology or desired by the user. 
+A valuable characteristic of reV is the level of detail it enables. However, because of the various input datasets required to build a reV supply curve, there are many different spatial scales that must be reconciled. How this is done will be described in the subsequent tutorials, but to give an idea of the types of resolutions we are working with, a typical reV run will begin with a 2-4 km gridded resource dataset (4 to 16 km<sup>2</sup>), use a 90m national land use grid (~0.0081 km<sup>2</sup>) , and ultimately aggregate to an output that could represent a typical solar farm in, say, a 3 km<sup>2</sup> grid (~9 km<sup>2</sup>), a wind farm in an 11.5 km grid (~132 km<sup>2</sup>), or any other scale appropriate for the target technology or desired by the user. 
 
 
 <p align="center">
@@ -92,7 +92,7 @@ A valuable characteristic of reV is the level of detail it enables. However, bec
 
 ## Resource Data
 
-The resource data used in reV represents the theoretical availability of a renewable energy across an area over time. It also quantifies the energy content of a resource at any specific location. There are several resource datasets used by NLR reV modelers, including the National Solar Radiation Database (NSRDB) (Sengupta et al., 2018, Figure 7), the Wind Integrated National Dataset Toolkit (WTK) (Draxl et a., 2015, Figure 8), Geothermal Resource Data (e.g., Aljubran and Horne, 2024, Figure 9), and others:
+The resource data used in reV represents the theoretical availability of an energy resource across an area over time. It also quantifies the energy content of a resource at any specific location. There are several resource datasets used by NLR reV modelers, including the National Solar Radiation Database (NSRDB) (Sengupta et al., 2018, Figure 7), the Wind Integrated National Dataset Toolkit (WTK) (Draxl et al., 2015, Figure 8), Geothermal Resource Data (e.g., Aljubran and Horne, 2024, Figure 9), and others:
 
 
 <p align="center">
@@ -105,44 +105,44 @@ The resource data used in reV represents the theoretical availability of a renew
 <p align="center">
   <img src="./images/world_wind_robinson_20260414.jpg" alt="WTK/WDB Global Coverage" width="1000">
   <br>
-  <em><b>Figure 7.</b> Global Coverage for the various NLR Wind Resource Datasets.</em>
+  <em><b>Figure 8.</b> Global Coverage for the various NLR Wind Resource Datasets.</em>
 </p>
 
 
 <p align="center">
   <img src="./images/national_map_geothermal_egs_2026.png" alt="NSRDB Global Coverage" width="1000">
   <br>
-  <em><b>Figure 8.</b> Development suitability for enhanced geothermal systems in the United States.</em>
+  <em><b>Figure 9.</b> Development suitability for enhanced geothermal systems in the United States.</em>
 </p>
 
 
 
 ## reV's Modular Design
 
-Another import characteristic of reV is its highly modular design. The outputs of each module are piped as inputs into the next module (as illustrated in Figure 9 below) and the user may stop at any point in the process. This increases the flexibility of reV for users. For example, a user may stop at the "System Generation Modeling" step (the reV-generation module) if they are not interested in land use or transmission or they may stop at the supply curve step (reV-supply-curve) if they don't need the final time series data and only require average capacity factors after the land use step (reV-supply-curve-aggregation). Additionally, this allows for branching scenario modeling. The user may build a set of generation outputs for a range of future technology advancement scenarios and may then build a number of supply curves from each of those for a range of land access scenarios. The pipeline is described in more detail on the landing page for the reV-tutorial, whose sub-tutorials will generally follow the reV modeling pipeline order.
+Another import characteristic of reV is its highly modular design. The outputs of each module are piped as inputs into the next module (as illustrated in Figure 10 below) and the user may stop at any point in the process. This increases the flexibility of reV for users. For example, a user may stop at the "System Generation Modeling" step (the reV-generation module) if they are not interested in land use or transmission or they may stop at the supply curve step (reV-supply-curve) if they don't need the final time series data and only require average capacity factors after the land use step (reV-supply-curve-aggregation). Additionally, this allows for branching scenario modeling. The user may build a set of generation outputs for a range of future technology advancement scenarios and may then build a number of supply curves from each of those for a range of land access scenarios. The pipeline is described in more detail on the landing page for the reV-tutorial, whose sub-tutorials will generally follow the reV modeling pipeline order.
 
 <p align="center">
   <img src="./images/rev_flow_chart.png" alt="reV Flow Chart" width="1000">
   <br>
-  <em><b>Figure 9.</b> Standard modular flow in the reV modeling pipeline.</em>
+  <em><b>Figure 10.</b> Standard modular flow in the reV modeling pipeline.</em>
 </p>
 
 
 
 # References
 
-Angliviel de La Beaumelle, Nils, Kornelis Blok, Jacques A. de Chalendar, Leon Clarke, Andrea N. Hahmann, Jonathan Huster, Gregory F. Nemet, Dhruv Suri, Thomas B. Wild, and Inês ML Azevedo. "The global technical, economic, and feasible potential of renewable electricity." Annual Review of Environment and Resources 48, no. 1 (2023): 419-449.
+Aljubran, Mohammad, and Roland Horne. "Stanford Thermal Earth Model for the Conterminous United States". No. 1592. DOE Geothermal Data Repository; Stanford University, 2024.
 
-Aljubran, Mohammad, and Roland Horne. Stanford Thermal Earth Model for the Conterminous United States. No. 1592. DOE Geothermal Data Repository; Stanford University, 2024.
+Angliviel de La Beaumelle, Nils, Kornelis Blok, Jacques A. de Chalendar, Leon Clarke, Andrea N. Hahmann, Jonathan Huster, Gregory F. Nemet, Dhruv Suri, Thomas B. Wild, and Inês ML Azevedo. "The global technical, economic, and feasible potential of renewable electricity". Annual Review of Environment and Resources 48, no. 1 (2023): 419-449.
 
-DOE Office of Energy Efficiency and Renewable Energy (EERE). (October 2006, updated January 2011). “Report to Congress on Renewable Energy Resource Assessment Information for the United States.” January 2011 (EPACT) Prepared by the National Renewable Energy Laboratory.
+DOE Office of Energy Efficiency and Renewable Energy (EERE). (October 2006, updated January 2011). “Report to Congress on Renewable Energy Resource Assessment Information for the United States”. January 2011 (EPACT) Prepared by the National Renewable Energy Laboratory.
 
-Draxl, Caroline, Andrew Clifton, Bri-Mathias Hodge, and Jim McCaa. "The wind integration national dataset (wind) toolkit." Applied Energy 151 (2015): 355-366.
+Draxl, Caroline, Andrew Clifton, Bri-Mathias Hodge, and Jim McCaa. "The wind integration national dataset (wind) toolkit". Applied Energy 151 (2015): 355-366.
 
-Häfele, Wolf, Jeanne Anderer, Alan McDonald, and Nebojsa Nakicenovic. Energy in a Finite World: Paths to a Sustainable Future (Volume 1). Vol. 1. Ballinger, 1981.
+Häfele, Wolf, Jeanne Anderer, Alan McDonald, and Nebojsa Nakicenovic. "Energy in a Finite World: Paths to a Sustainable Future" (Volume 1)". Vol. 1. Ballinger, 1981.
 
-Lopez, Anthony, Billy Roberts, Donna Heimiller, Nate Blair, and Gian Porro. US renewable energy technical potentials: a GIS-based analysis. No. NREL/TP--6A20-51946. National Renewable Energy Laboratory (NREL), Golden, CO (United States), 2012.
+Lopez, Anthony, Billy Roberts, Donna Heimiller, Nate Blair, and Gian Porro. "US renewable energy technical potentials: a GIS-based analysis". No. NREL/TP-6A20-51946. National Renewable Energy Laboratory (NREL), Golden, CO (United States), 2012.
 
-Roberts, Owen, Travis Williams, Anthony Lopez, Galen Maclaurin, and Annika Eberle. Exploring the impact of near-term innovations on the technical potential of land-based wind energy. No. NREL/TP-5000-81664. National Renewable Energy Laboratory (NREL), Golden, CO (United States), 2023.
+Roberts, Owen, Travis Williams, Anthony Lopez, Galen Maclaurin, and Annika Eberle. "Exploring the impact of near-term innovations on the technical potential of land-based wind energy". No. NREL/TP-5000-81664. National Renewable Energy Laboratory (NREL), Golden, CO (United States), 2023.
 
-Sengupta, Manajit, Yu Xie, Anthony Lopez, Aron Habte, Galen Maclaurin, and James Shelby. "The national solar radiation data base (NSRDB)." Renewable and sustainable energy reviews 89 (2018): 51-60.
+Sengupta, Manajit, Yu Xie, Anthony Lopez, Aron Habte, Galen Maclaurin, and James Shelby. "The national solar radiation data base (NSRDB)". Renewable and sustainable energy reviews 89 (2018): 51-60.
