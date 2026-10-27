@@ -135,8 +135,6 @@ Aljubran, Mohammad, and Roland Horne. "Stanford Thermal Earth Model for the Cont
 
 Angliviel de La Beaumelle, Nils, Kornelis Blok, Jacques A. de Chalendar, Leon Clarke, Andrea N. Hahmann, Jonathan Huster, Gregory F. Nemet, Dhruv Suri, Thomas B. Wild, and Inês ML Azevedo. "The global technical, economic, and feasible potential of renewable electricity". Annual Review of Environment and Resources 48, no. 1 (2023): 419-449.
 
-DOE Office of Energy Efficiency and Renewable Energy (EERE). (October 2006, updated January 2011). “Report to Congress on Renewable Energy Resource Assessment Information for the United States”. January 2011 (EPACT) Prepared by the National Renewable Energy Laboratory.
-
 Draxl, Caroline, Andrew Clifton, Bri-Mathias Hodge, and Jim McCaa. "The wind integration national dataset (wind) toolkit". Applied Energy 151 (2015): 355-366.
 
 Häfele, Wolf, Jeanne Anderer, Alan McDonald, and Nebojsa Nakicenovic. "Energy in a Finite World: Paths to a Sustainable Future" (Volume 1)". Vol. 1. Ballinger, 1981.
@@ -146,3 +144,5 @@ Lopez, Anthony, Billy Roberts, Donna Heimiller, Nate Blair, and Gian Porro. "US 
 Roberts, Owen, Travis Williams, Anthony Lopez, Galen Maclaurin, and Annika Eberle. "Exploring the impact of near-term innovations on the technical potential of land-based wind energy". No. NREL/TP-5000-81664. National Renewable Energy Laboratory (NREL), Golden, CO (United States), 2023.
 
 Sengupta, Manajit, Yu Xie, Anthony Lopez, Aron Habte, Galen Maclaurin, and James Shelby. "The national solar radiation data base (NSRDB)". Renewable and sustainable energy reviews 89 (2018): 51-60.
+
+U.S. Dept. of Energy (DOE), Office of Energy Efficiency and Renewable Energy (EERE). (October 2006, updated January 2011). “Report to Congress on Renewable Energy Resource Assessment Information for the United States”. January 2011 (EPACT) Prepared by the National Renewable Energy Laboratory.
