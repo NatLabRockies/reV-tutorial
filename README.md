@@ -1,7 +1,7 @@
 # reV Tutorial
 A tutorial for the Renewable Energy Potential Model ([reV](https://github.com/natlabrockies/reV)).
 
-This is a repository for learning to run reV through its Commands-Line Interface (CLI). It contains the sample input data found in the reV repository and sample run directories set up to create outputs for a study area in Rhode Island. Detailed instructions, example runs, and tests can be found in the official reV repository, but this repository will supplement that material with various Python scripts and preconfigured run folders specifically tailored for learning the basics of retrieving or building the input datasets, configuring the settings, running the model, and troubleshooting common problems. The sample runs will point to the inputs automatically with the hope that it will help the user better understand the required formats needed for building custom inputs.
+This is a repository for learning to run reV through its Commands-Line Interface (CLI). It contains the sample input data found in the reV repository and sample run directories set up to create outputs for a study area in Rhode Island. Detailed instructions, example runs, and tests can be found in the official reV repository, but this repository will supplement that material with various Python scripts and preconfigured run folders specifically tailored for learning the basics of retrieving or building the input datasets, configuring the settings, running the model, and troubleshooting common problems.
 
 # What is reV?
 
