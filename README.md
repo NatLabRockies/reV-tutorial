@@ -1,13 +1,13 @@
-# reV Tutorial
-A tutorial for the Renewable Energy Potential Model ([reV](https://github.com/natlabrockies/reV)).
-
-This is a repository for learning to run reV through its Command-Line Interface (CLI). It contains the sample input data found in the reV repository and sample run directories set up to create outputs for a study area in Rhode Island. Detailed instructions, example runs, and tests can be found in the official reV repository, but this repository will supplement that material with various Python scripts and preconfigured run folders specifically tailored for learning the basics of retrieving or building the input datasets, configuring the settings, running the model, and troubleshooting common problems.
-
 # What is reV?
 
 reV is a platform for the detailed assessment of renewable energy resources and their geospatial intersection with grid infrastructure and land use characteristics. It is centered on the concept of technical potential which will be covered in the first tutorial ([`tutorial_01_concepts`](https://github.com/NatLabRockies/reV-tutorial/tree/master/tutorial_01_concepts)) and is part of a network of interacting energy system models at the National Laboratory of the Rockies, but it is made fully open-source in the form of a Python package for public use. In addition, the lab has developed a suite of support packages. These serve both as direct dependencies for reV or as tools for building inputs and formatting outputs and which will be introduced in this series. 
 
 As we move forward in this tutorial series, we will continue to elaborate on what reV is, what it does, and how it fits into energy systems analysis.
+
+# reV Tutorial
+A tutorial for the Renewable Energy Potential Model ([reV](https://github.com/natlabrockies/reV)).
+
+This is a repository for learning to run reV through its Command-Line Interface (CLI). It contains the sample input data found in the reV repository and sample run directories set up to create outputs for a study area in Rhode Island. Detailed instructions, example runs, and tests can be found in the official reV repository, but this repository will supplement that material with various Python scripts and preconfigured run folders specifically tailored for learning the basics of retrieving or building the input datasets, configuring the settings, running the model, and troubleshooting common problems.
 
 # Brief description of the reV modeling pipeline
 
