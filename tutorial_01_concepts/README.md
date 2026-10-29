@@ -80,7 +80,7 @@ A "supply curve" in reV terminology refers to a set of individual potential mode
 
 ### Levels of Detail
 
-A valuable characteristic of reV is the level of detail it enables. However, because of the various input datasets required to build a reV supply curve, there are many different spatial scales that must be reconciled. How this is done will be described in the subsequent tutorials, but to give an idea of the types of resolutions we are working with, a typical reV run will begin with a 2-4 km gridded resource dataset (4 to 16 km<sup>2</sup>), use a 90m national land use grid (~0.0081 km<sup>2</sup>) , and ultimately aggregate to an output that could represent a typical solar farm in, say, a 3 km<sup>2</sup> grid (~9 km<sup>2</sup>), a wind farm in an 11.5 km grid (~132 km<sup>2</sup>), or any other scale appropriate for the target technology or desired by the user. 
+A valuable characteristic of reV is the level of detail it enables. However, because of the various input datasets required to build a reV supply curve, there are many different spatial scales that must be reconciled. How this is done will be described in the subsequent tutorials, but to give an idea of the types of resolutions we are working with, a typical reV run will begin with a 2-4 km gridded resource dataset (4 to 16 km<sup>2</sup>), use a 90m national land use grid (~0.0081 km<sup>2</sup>) , and ultimately aggregate to an output that could represent a typical solar farm in, say, a 3 km grid (9 km<sup>2</sup>), a wind farm in an 11.5 km grid (~132 km<sup>2</sup>), or any other scale appropriate for the target technology or desired by the user. 
 
 
 <p align="center">
