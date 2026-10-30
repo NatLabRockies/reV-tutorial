@@ -20,7 +20,7 @@ format data. The exclusion data developed here will eventually be accessed in th
 The Python file `exclusion.py` provides steps to upload existing geotiffs 
 into a new or existing reV-compatible `HDF5` file. The script uses `reVX`, 
 which stands for 
-[reV eXchange tool](https://github.com/NREL/reVX/tree/main?tab=readme-ov-file). 
+[reV eXchange tool](https://github.com/NatLabRockies/reVX). 
 The `reVX` already has methods that 
 handle the conversion and we are going to use in this tutorial. 
 
@@ -36,7 +36,7 @@ HDF5 datasets out as a geotiff.
 Some of the commonly used exclusion 
 layers that reflect constraints on development are:
 - **Protected areas**: Protected Lands Dataset in the USA ("ri_padus.tif"). 
-- [ReEDS](https://www.nrel.gov/analysis/reeds/): The Regional Energy 
+- [ReEDS](https://www.nlr.gov/analysis/reeds/): The Regional Energy 
 Deployment System Regions ("ri_reeds_regions.tif"). 
 - [Human Settlement](https://human-settlement.emergency.copernicus.eu): 
 Global Human Settlement Layer ("ri_smod.tif"). 
