@@ -4,6 +4,7 @@
 
 # reV-tutorials items
 data/videos/
+*generation*h5
 .gaps/
 logs/
 QA_multi-year/
