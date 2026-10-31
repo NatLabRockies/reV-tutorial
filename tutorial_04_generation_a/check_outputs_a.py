@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Some quick routines for the outputs."""
+"""Some quick routines for checking reV generation outputs."""
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-
 import h5py
 import pandas as pd
 import reV
@@ -54,13 +53,20 @@ def main():
 
     # Everything else is site specific (x-axis of the profile)
     lcoe = ds["lcoe_fcr"][:]
+    cf_mean = ds["cf_mean_ac"][:]
 
-    # This is the time index, it stored as bytes objects
+    # This is the time index, values are bytes objects
+    # Also, these are in UTC, or Coordinated Universal Time
     time = ds["time_index"][:]
-    time = [t.decode()[5:-9] for t in time]  # Adjusting for the plot
+    time = [t.decode()[:-9] for t in time]
+
+    # This is the meta "table", but it's stored as a structured array
+    # And strings and other Python objects are stored as bytes
+    meta = ds["meta"][:]
+    meta = pd.DataFrame(meta)
 
     # Visualize the capacity factor profile
-    # Pull out a sample, it's a bit too long
+    # First, let's take a sample, it's too long to see it well (8,760 rows)
     scf = cf[:1_000]
     stime = time[:1_000]
 
@@ -74,20 +80,12 @@ def show_other_items():
     options = reV.Gen.OPTIONS
     print(list(options))
 
-    # Find the SAM object
-    from PySAM import Pvwattsv8 as pv8
-    pv = pv8.Pvwattsv8
-
     # Find the reV-SAM object
     windpower = reV.SAM.generation.Windpower
 
-    # Is my resource file formatted correctly?
-    try:
-        res_fpath = RES_FPATHS[0]
-        _ = Resource(res_fpath)
-        print(f"{res_fpath} properly formatted.")
-    except Exception as e:
-        raise Exception(f"{res_fpath} not properly formatted: {e}.")
+    # Find the original SAM object
+    from PySAM import Pvwattsv8 as pv8
+    pv = pv8.Pvwattsv8
 
 
 if __name__ == "__main__":
