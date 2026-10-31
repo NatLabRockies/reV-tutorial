@@ -18,7 +18,16 @@ GEN_FPATHS = list(HOME.glob("*generation*h5"))
 RES_FPATHS = list(HOME.glob("*nsrdb*h5"))
 
 
+def summary(array):
+    """Quickly printout some summary statistics for an array."""
+    df = pd.DataFrame(array.flatten())
+    df.columns = ["value"]
+    stats = df.describe()
+    print(stats)
+
+
 def plotit(scf, stime):
+    """Plot a 2-D generation output array with pyplot's imshow."""
     _, ax = plt.subplots(figsize=(3, 8))
     im = ax.imshow(scf, cmap="viridis")
     cbar = plt.colorbar(im, ax=ax, shrink=0.5)
@@ -43,17 +52,22 @@ def main():
     datasets = list(ds)
     datasets = ds.keys()
 
+    # The attributes are also like dicts
+    for key, value in ds.attrs.items():
+        print(f"{key}: {value}")
+
     # The biggest output is the capacity factor profile
     scale = ds["cf_profile_ac"].attrs["scale_factor"]
     cf = ds["cf_profile_ac"][:] / scale
 
-    # Little trick for summary stats
-    df = pd.DataFrame(cf.flatten())
-    df.describe()
+    # Little trick with pandas for summary stats
+    summary(cf)
 
     # Everything else is site specific (x-axis of the profile)
     lcoe = ds["lcoe_fcr"][:]
     cf_mean = ds["cf_mean_ac"][:]
+    summary(lcoe)
+    summary(cf_mean)
 
     # This is the time index, values are bytes objects
     # Also, these are in UTC, or Coordinated Universal Time
