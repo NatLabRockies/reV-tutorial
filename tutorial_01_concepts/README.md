@@ -28,7 +28,7 @@ In the context of the reV model, we will use the definition provided by the auth
 <p align="center">
   <img src="./images/energy_potential_levels_pyramid.png" alt="Renewable Energy Technical Potential Levels" width="600">
   <br>
-  <em><b>Figure 2.</b> An earlier version of the conceptual diagram of potential energy levels for renewable energy. Both this and Figure 1 are based Table 4-1 in the 2011 update of DOE EERE (2006)</em>
+  <em><b>Figure 2.</b> An earlier version of the conceptual diagram of potential energy levels for renewable energy. Both this and Figure 1 are based on Table 4-1 in the 2011 update of DOE EERE (2006)</em>
 </p>
 
 The original energy level table in the 2011 Renewable Energy Resource Assessment Report to Congress, as described in Figures 1, 2, and Lopez et al. 2012, is recreated below. This may require a note of clarification considering constraints you may find in more recent assessments of techno-economic potential (e.g., Lopez et al, 2025): regulatory limits that specifically constrain land-use may be considered as technical exclusions to potential development and distinct from the regulatory limits described below as a market constraint. 
